@@ -11,6 +11,8 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import NotificationImportant from '@material-ui/icons/NotificationImportant';
+import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
+import Menu from './Menu'
 
 class ChatListComponent extends React.Component {
 
@@ -21,13 +23,9 @@ class ChatListComponent extends React.Component {
     if(this.props.chats.length > 0) {
       return(
         <div className={classes.root}>
-            <Button variant="contained" 
-              fullWidth 
-              color='primary' 
-              onClick={this.newChat} 
-              className={classes.newChatBtn}>
-                New Message
-            </Button>
+          <div className={classes.header}> 
+           <Menu />
+          </div>
             <List>
               {
                 this.props.chats.map((_chat, _index) => {
@@ -38,7 +36,9 @@ class ChatListComponent extends React.Component {
                         selected={this.props.selectedChatIndex === _index} 
                         alignItems="flex-start">
                         <ListItemAvatar>
-                          <Avatar alt="Remy Sharp">{_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}</Avatar>
+                          <Avatar alt="Remy Sharp" style={{textTransform:'uppercase'}}>
+                            {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
+                          </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
                           primary={_chat.users.filter(_user => _user !== this.props.userEmail)[0]}
@@ -52,7 +52,10 @@ class ChatListComponent extends React.Component {
                           }/>
                           {
                             _chat.receiverHasRead === false && !this.userIsSender(_chat) ? 
-                            <ListItemIcon><NotificationImportant className={classes.unreadMessage}></NotificationImportant></ListItemIcon> :
+                            <ListItemIcon>
+                              <NotificationImportant className={classes.unreadMessage}>
+                              </NotificationImportant>
+                            </ListItemIcon> :
                             null
                           }
                       </ListItem>
@@ -61,6 +64,15 @@ class ChatListComponent extends React.Component {
                   )
                 })
               }
+              <Button 
+                onClick={this.newChat} 
+                className={classes.newChatBtn}>
+                <ListItemIcon>
+                <div className={classes.circle}>
+                <MessageOutlinedIcon className={classes.add}></MessageOutlinedIcon>
+                </div>
+              </ListItemIcon> 
+            </Button>
             </List>
         </div>
       );

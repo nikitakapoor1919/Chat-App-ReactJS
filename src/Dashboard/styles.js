@@ -13,6 +13,14 @@ const styles = theme => ({
           opacity:'0.9',
           backgroundColor: '#227092',
       }
+    },
+    loading:{
+      display:'flex',
+      justifyContent:'center',
+      fontSize:'40px',
+      fontFamily:'Cambria',
+      LetterSpacing:'7px',
+      marginTop:'250px'
     }
   });
   

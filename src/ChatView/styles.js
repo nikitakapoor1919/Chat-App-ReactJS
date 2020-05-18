@@ -41,14 +41,15 @@ const styles = theme => ({
     chatHeader: {
       width: 'calc(100% - 301px)',
       height: '50px',
-      backgroundColor: '#344195',
+      background:'#1e4a9df2',
       position: 'fixed',
       marginLeft: '301px',
       fontSize: '18px',
       textAlign: 'center',
       color: 'white',
       paddingTop: '10px',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      zIndex:'99'
     }
   
   });
