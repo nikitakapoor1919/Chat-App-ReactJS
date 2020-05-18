@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './styles';
 import { withStyles } from '@material-ui/core/styles';
+import Moment from 'moment';
+import MoreVert from '@material-ui/icons/MoreVert';
 
 class ChatViewComponent extends React.Component {
 
@@ -26,6 +28,7 @@ class ChatViewComponent extends React.Component {
         <div>
           <div className={classes.chatHeader}>
             Your conversation with {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0]}
+            
           </div>
           <main id='chatview-container' className={classes.content}>
             {
@@ -33,6 +36,9 @@ class ChatViewComponent extends React.Component {
                 return(
                 <div key={_index} className={_msg.sender === this.props.user ? classes.userSent : classes.friendSent}>
                   {_msg.message}
+                  <div style={{textAlign:"right"}}>
+                  {Moment(_msg.timestamp).format("HH:MM a")}
+                  </div>
                 </div>
                 )
               })

@@ -5,6 +5,7 @@ import ChatViewComponent from '../ChatView/chatView';
 import ChatTextBoxComponent from '../ChatTextBox/chatTextBox';
 import styles from './styles';
 import { Button, withStyles } from '@material-ui/core';
+import MoreVert from '@material-ui/icons/MoreVert';
 const firebase = require("firebase");
 
 // I need to investigate why sometimes
