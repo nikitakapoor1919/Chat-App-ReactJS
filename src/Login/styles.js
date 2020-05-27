@@ -10,13 +10,6 @@ const styles = theme => ({
         marginRight: 'auto',
       },
     },
-    paper: {
-      marginTop: theme.spacing.unit * 8,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    },
     form: {
       width: '100%',
       marginTop: theme.spacing.unit,
@@ -36,7 +29,24 @@ const styles = theme => ({
     errorText: {
       color: 'red',
       textAlign: 'center'
-    }
+    },
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
   });
   
   export default styles;

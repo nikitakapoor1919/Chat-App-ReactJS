@@ -6,6 +6,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import LoginComponent from './Login/login';
 import SignupComponent from './SignUp/signup';
 import DashboardComponent from './Dashboard/dashboard';
+import ProfileComponent from './Profile/profile';
 
 const firebase=require("firebase")
 require("firebase/firestore")
@@ -27,6 +28,7 @@ const routing =(
       <Route path='/login' component={LoginComponent}></Route>
       <Route path='/signup' component={SignupComponent}></Route>
       <Route path='/dashboard' component={DashboardComponent}></Route>
+      <Route path='/profile' component={ProfileComponent}></Route>
     </div>
   </Router>
 )

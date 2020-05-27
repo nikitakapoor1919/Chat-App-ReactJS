@@ -12,6 +12,9 @@ const styles = theme => ({
       '&:hover':{
           opacity:'0.9',
           backgroundColor: '#227092',
+      },
+      '@media screen and (max-width: 1024px)': {
+        width:'100%'
       }
     },
     loading:{

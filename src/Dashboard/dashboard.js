@@ -7,13 +7,6 @@ import styles from './styles';
 import { Button, withStyles } from '@material-ui/core';
 const firebase = require("firebase");
 
-// I need to investigate why sometimes
-// two messages will send instead of just
-// one. I dont know if there are two instances
-// of the chat box component or what...
-
-// I will be using both .then and async/await
-// in this tutorial to give a feel of both.
 
 class DashboardComponent extends React.Component {
 

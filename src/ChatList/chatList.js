@@ -36,7 +36,7 @@ class ChatListComponent extends React.Component {
                         selected={this.props.selectedChatIndex === _index} 
                         alignItems="flex-start">
                         <ListItemAvatar>
-                          <Avatar alt="Remy Sharp" style={{textTransform:'uppercase'}}>
+                          <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}>
                             {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
                           </Avatar>
                         </ListItemAvatar>
@@ -68,9 +68,11 @@ class ChatListComponent extends React.Component {
                 onClick={this.newChat} 
                 className={classes.newChatBtn}>
                 <ListItemIcon>
-                <div className={classes.circle}>
-                <MessageOutlinedIcon className={classes.add}></MessageOutlinedIcon>
-                </div>
+                  <div>
+                  <div className={classes.circle}>
+                  <MessageOutlinedIcon className={classes.add}></MessageOutlinedIcon>
+                  </div>
+                  </div>
               </ListItemIcon> 
             </Button>
             </List>

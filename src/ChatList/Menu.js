@@ -7,7 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const firebase = require("firebase");
 
 const options = [
- 'Profile',
+ 
 ];
 const ITEM_HEIGHT = 48;
 
@@ -52,11 +52,8 @@ const ITEM_HEIGHT = 48;
           </MenuItem>
         ))}
         <MenuItem>
-        <Link to="/">
-            Profile
-        </Link>
+        <a href='/profile' style={{ width: '100%', textDecoration: 'none',color:'black'}}>Profile</a>
         </MenuItem>
-
         <MenuItem  onClick={signOut}>
             SignOut
         </MenuItem>

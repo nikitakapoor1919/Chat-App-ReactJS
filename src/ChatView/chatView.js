@@ -29,7 +29,7 @@ class ChatViewComponent extends React.Component {
         <div>
           <div className={classes.chatHeader}>
           <ListItemAvatar>
-          <Avatar alt="Remy Sharp" style={{position: 'absolute',left: '20px',top:'3px',textTransform:'uppercase'}}>
+          <Avatar alt="Remy Sharp" className={classes.green} style={{position: 'absolute',left: '20px',top:'3px',textTransform:'uppercase'}}>
             {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0].split('')[0]}
           </Avatar>
         </ListItemAvatar>
