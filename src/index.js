@@ -7,6 +7,7 @@ import LoginComponent from './Login/login';
 import SignupComponent from './SignUp/signup';
 import DashboardComponent from './Dashboard/dashboard';
 import ProfileComponent from './Profile/profile';
+import 'firebase/storage'
 
 const firebase=require("firebase")
 require("firebase/firestore")
@@ -21,6 +22,7 @@ firebase.initializeApp({
     appId: "1:789043871337:web:5b4a4e5ae9cd3d7d2facf8",
     measurementId: "G-P79Z7SB2GJ"
 })
+const storage=firebase.storage()
 
 const routing =(
   <Router>
@@ -39,3 +41,6 @@ ReactDOM.render(routing, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+ export {
+   storage
+ }

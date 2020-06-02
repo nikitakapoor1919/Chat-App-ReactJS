@@ -9,7 +9,11 @@ const styles = theme => ({
       overflowY: 'scroll',
       top: '50px',
       width: 'calc(100% - 300px)',
-      position: 'absolute'
+      position: 'absolute',
+      '@media screen and (max-width: 1024px)': {
+        width:'100%',
+        marginLeft:'0px'
+      }
     },
   
     userSent: {
@@ -19,10 +23,13 @@ const styles = theme => ({
       boxSizing: 'border-box',
       wordWrap: 'break-word',
       marginTop: '10px',
-      backgroundColor: '#0C45CCE3',
+      backgroundColor: '#128C7E',
       color: 'white',
       width: '300px',
-      borderRadius: '10px'
+      borderRadius: '10px',
+      '@media screen and (max-width: 1024px)': {
+        width: '200px',
+      }
     },
   
     friendSent: {
@@ -35,13 +42,17 @@ const styles = theme => ({
       backgroundColor: '#6D6E73CC',
       color: 'white',
       width: '300px',
-      borderRadius: '10px'
+      borderRadius: '10px',
+      '@media screen and (max-width: 1024px)': {
+        width: '200px',
+      }
+      
     },
   
     chatHeader: {
       width: 'calc(100% - 301px)',
-      height: '50px',
-      background:'#1e4a9df2',
+      height: '85px',
+      background:'#075E54',
       position: 'fixed',
       marginLeft: '301px',
       fontSize: '18px',
@@ -49,13 +60,22 @@ const styles = theme => ({
       color: 'white',
       paddingTop: '10px',
       boxSizing: 'border-box',
-      zIndex:'99'
+      zIndex:'99',
+      '@media screen and (max-width: 1024px)': {
+        width:'100%',
+        marginLeft:'0px'
+      }
+      
     },
     green: {
       color: '#fff',
       backgroundColor: '#4caf50'
     },
-  
+   list:{
+    position: 'absolute',
+    top: '10px',
+    left: '100px',
+   }
   });
   
   export default styles;

@@ -33,12 +33,13 @@ const styles = theme => ({
         marginTop:'20px'
       },
       edit:{
-          marginTop:'10px',
+          marginTop:'5px',
           cursor:'pointer',
           color:'gray'
       } ,
       appBar: {
         position: 'relative',
+        background:'#075E54'
       },
       title: {
         marginLeft: theme.spacing(2),

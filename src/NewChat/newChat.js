@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormControl, InputLabel, Input, Button, Paper, withStyles, CssBaseline, Typography } from '@material-ui/core';
 import styles from './styles';
+import TextField from '@material-ui/core/TextField';
+
 const firebase = require("firebase");
 
 class NewChatComponent extends React.Component {
@@ -21,9 +23,31 @@ class NewChatComponent extends React.Component {
       <main className={classes.main}>
         <CssBaseline/>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h5">Send A Message!</Typography>
+          <Typography component="h1" variant="h5">New Message</Typography>
           <form className={classes.form} onSubmit={(e) => this.submitNewChat(e)}>
-            <FormControl fullWidth>
+              <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="  Enter Your Friend's Email"
+                  name="username"
+                  autoFocus
+                  onChange={(e) => this.userTyping('username', e)} 
+                  id='new-chat-username'
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  autoComplete='off'
+                  fullWidth
+                  name="message"
+                  label=" Enter Your Message"
+                  onChange={(e) => this.userTyping('message', e)} 
+                  id='new-chat-message'
+                />
+            {/* <FormControl fullWidth>
               <InputLabel htmlFor='new-chat-username'>
                   Enter Your Friend's Email
               </InputLabel>
@@ -43,8 +67,8 @@ class NewChatComponent extends React.Component {
                 onChange={(e) => this.userTyping('message', e)} 
                 id='new-chat-message'>
               </Input>
-            </FormControl>
-            <Button fullWidth variant='contained' color='primary' className={classes.submit} type='submit'>Send</Button>
+            </FormControl> */}
+            <Button fullWidth variant='contained' style={{background:'#075E54',color:'white'}} className={classes.submit} type='submit'>Send</Button>
           </form>
           {
             this.state.serverError ? 

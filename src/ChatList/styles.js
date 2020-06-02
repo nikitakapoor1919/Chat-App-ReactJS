@@ -1,7 +1,8 @@
 const styles = theme => ({
     root: {
       backgroundColor: theme.palette.background.paper,
-      height: 'calc(100% - 35px)',
+     // height: 'calc(100% - 35px)',
+       height:'100%',
       position: 'absolute',
       left: '0',
       width: '300px',
@@ -23,7 +24,7 @@ const styles = theme => ({
       right: '5px'
     },
     header:{
-      background:'#1e4a9df2',
+      background:'#075E54',
       padding:'25px'
     },
     menu:{
@@ -43,7 +44,7 @@ const styles = theme => ({
       position: 'fixed',
       height: '50px',
       width: '50px',
-      backgroundColor: '#1d4593',
+      backgroundColor: '#128C7E',
       borderRadius: '50%',
       bottom: '50px',
      // left: '240px'
@@ -55,6 +56,24 @@ const styles = theme => ({
     green: {
       color: '#fff',
       backgroundColor: '#4caf50'
+    },
+   
+    searchIcon: {
+      position: 'absolute',
+      top: '30px',
+      zIndex: '99',
+      left: '190px',
+      color: 'white'
+    },
+    inputRoot: {
+      color: 'white',
+      padding: '6px',
+      border: 'none',
+      fontSize: '17px',
+      background: '#096A5F',
+      borderRadius: '12px',
+      width: '200px',
+      height: '35px',
     },
   });
   

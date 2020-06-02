@@ -71,10 +71,10 @@ class LoginComponent extends React.Component {
                   autoComplete="current-password"
                   onChange={(e)=>this.userTyping('password',e)}
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
-                />
+                /> */}
                 <Button
                   type="submit"
                   fullWidth
@@ -84,11 +84,15 @@ class LoginComponent extends React.Component {
                 >
                   Sign In
                 </Button>
+                <Button variant="contained" onClick={this.googleSignin} style={{marginBottom:'30px',background:'white',textTransform:'capitalize'}}>
+                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWUxinfXVrs0myOQO3Nkjgv1cct1VklsUBEkP54pSBBw6-nokz&usqp=CAU' style={{height:'20px',marginRight:'5px'}}></img>
+                  Sign in with Google
+                </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" className={classes.signUpLink} variant="body2">
+                    {/* <Link href="#" className={classes.signUpLink} variant="body2">
                       Forgot password?
-                    </Link>
+                    </Link> */}
                   </Grid>
                   <Grid item>
                     <Link className={classes.signUpLink} to='/signup' variant="body2">
@@ -135,6 +139,19 @@ class LoginComponent extends React.Component {
             //    </Paper>
             // </main>
         )
+    }
+    googleSignin=()=>{
+      
+      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((result)=>{
+        console.log(result)
+        console.log('Success')
+        this.props.history.push('/dashboard')
+      })
+      .catch((err)=>{
+        console.log(err)
+        console.log('Failed To Do ')
+      })
     }
     userTyping=(type,e)=>{
         switch(type){
