@@ -13,14 +13,7 @@ const firebase=require("firebase")
 require("firebase/firestore")
 
 firebase.initializeApp({
-    apiKey: "AIzaSyC08poH07nnZtY77bn2Ut03sOCMt3Y7Fpg",
-    authDomain: "react-chatapp-22693.firebaseapp.com",
-    databaseURL: "https://react-chatapp-22693.firebaseio.com",
-    projectId: "react-chatapp-22693",
-    storageBucket: "react-chatapp-22693.appspot.com",
-    messagingSenderId: "789043871337",
-    appId: "1:789043871337:web:5b4a4e5ae9cd3d7d2facf8",
-    measurementId: "G-P79Z7SB2GJ"
+    
 })
 const storage=firebase.storage()
 
