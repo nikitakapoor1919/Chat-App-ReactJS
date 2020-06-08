@@ -55,12 +55,16 @@ constructor(props) {
          about:null,
          alert:false,
          image:null,
-         url:''
+         url:'',
+         openPicDialog:false
     }
 }
-
+handleClosePic = () => {
+    this.props.onClose(this.props.selectedValue);
+  };
     render() {
         const {classes}=this.props
+        const { onClose, selectedValue, open } = this.props;
         return (
             <div>
                 <AppBar className={classes.appBar}>
@@ -75,7 +79,9 @@ constructor(props) {
                 </Typography>
             </Toolbar>
             </AppBar>
-            
+            <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" open={this.state.openPicDialog}>
+             <Button onClick={this.handleUpload}>Confirm</Button>
+            </Dialog>
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
@@ -88,7 +94,7 @@ constructor(props) {
                 color="inherit"
                 size="small"
                 onClick={() => this.setState({alert:false})}
-                style={{width:'25%'}}
+                style={{width:'25%',marginTop:'-20px'}}
                 >
                 <CloseIcon fontSize="inherit" />
                 </IconButton>
@@ -109,21 +115,24 @@ constructor(props) {
                 <div className={classes.margin}>
                     <Grid container spacing={1} alignItems="flex-end">
                     <Grid item>
-                    <form className={classes.form} onSubmit={(e)=>this.submit(e)}>
-                       <Button
-                        onClick={this.handleUpload}
-                        >
-                        <CameraAltIcon onClick={()=>{this.setState({alert:true})}}/>
                         <input
                             type="file"
-                            style={{ display: "none" }}
+                            id='file'
+                            style={{ display: "none"}}
+                            ref={(ref) => this.upload = ref}
+                            onChange={this.handleChangeImage}
                         />
+                       <Button
+                        style={{marginTop:'-40px' }}
+                        onClick={()=>{this.upload.click()}}
+                        //onClick={this.handleUpload}
+                        >
+                          <CameraAltIcon/>
                         </Button>
-                    </form>
                     </Grid>
                     </Grid>
                 </div>
-                <div className={classes.margin} style={{marginTop:'50px'}}>
+                <div className={classes.margin}>
                     <Grid container spacing={1} alignItems="flex-end">
                     <Grid item>
                         <AccountCircle className={classes.icon} />
@@ -147,7 +156,7 @@ constructor(props) {
                     </Grid>
                     </Grid>
                 </div>
-                <div className={classes.margin} style={{marginLeft:'-55px'}} >
+                <div className={classes.margin}style={{marginLeft:'-5px'}}>
                     <Grid container spacing={1} alignItems="flex-end">
                     <Grid item>
                         <EmailIcon className={classes.icon} />
@@ -157,10 +166,10 @@ constructor(props) {
                             <TextField id="input-with-icon-grid" 
                             name="email"
                             value={this.state.email}
-                            InputProps={{style:{color:'black'}}}
+                            InputProps={{style:{color:'black',width:'225px'}}}
                             disabled
+                           // onChange={(e)=>this.userTyping('email',e)}
                             />
-
                     </Grid>
                     </Grid>
                 </div>
@@ -237,15 +246,9 @@ constructor(props) {
             </div>
         )
     }
-    handleChangeImage=e=>{
-        if(e.target.files[0]){
-            const image=e.target.files[0]
-            this.setState({image:e.target.files[0]})
-        }
-    }
-    
     handleUpload=()=>{
         const {image}=this.state
+        console.log(image.name)
         const uploadTask=storage.ref(`images/${image.name}`).put(image)
         uploadTask.on('state_changed',
         (snapshot)=>{
@@ -258,9 +261,27 @@ constructor(props) {
           storage.ref('images').child(image.name).getDownloadURL().then(url=>{
               console.log(url)
               this.setState({url:url})
+              var uemail = firebase.auth().currentUser.email;
+              firebase
+              .firestore()
+              .collection('users')
+              .doc(uemail)
+              .update({
+                  pic:this.state.url ? this.state.url:'',
+                })
+                console.log('Done Uploading pic')
           })
         })
+        this.setState({openPicDialog:false})
     }
+    handleChangeImage=e=>{
+        if(e.target.files[0]){
+            const image=e.target.files[0]
+            this.setState({image:e.target.files[0],openPicDialog:true})
+            console.log(image)
+        } 
+    }
+  
     handleClickOpen = () => {
         this.setState({
             setOpen:true,
@@ -285,6 +306,7 @@ constructor(props) {
           if(!_usr)
             this.props.history.push('/login');
           else {
+              {this.setState({email:_usr.email})}
             firebase
             .firestore().collection('users').doc(_usr.email)
            .get()
@@ -315,7 +337,7 @@ constructor(props) {
                 break    
             case 'value':
                     this.setState({value:e.target.value})
-                    break    
+                    break           
             default:
                 break
         }
@@ -334,6 +356,7 @@ constructor(props) {
             name:this.state.name ? this.state.name:'',
             pic:this.state.url ? this.state.url:'',
           })
+          console.log('Done Uploading Info')
         }
 
 }
