@@ -7,7 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const firebase = require("firebase");
 
 const options = [
- 
+//  'Video Chat Room'
 ];
 const ITEM_HEIGHT = 48;
 

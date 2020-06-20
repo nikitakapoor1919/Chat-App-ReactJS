@@ -50,6 +50,18 @@ const styles = theme => ({
         color: 'white',
         fontWeight: 'bolder'
       },
+      welcome:{
+        fontWeight: '600',
+        lineHeight: '28px',
+        fontSize: '22px',
+        marginBottom:'20px',
+        fontFamily: 'medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif'
+      },
+      root:{
+        '@media screen and (max-width: 1024px)': {
+        display:'none'
+        }
+      }
   });
   
   export default styles;

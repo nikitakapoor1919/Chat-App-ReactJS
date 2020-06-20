@@ -34,7 +34,7 @@ import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import {storage} from  '../index'
-
+import DialogActions from '@material-ui/core/DialogActions';
 const firebase = require("firebase");
 
 function Transition(props) {
@@ -56,12 +56,14 @@ constructor(props) {
          alert:false,
          image:null,
          url:'',
-         openPicDialog:false
+         openPicDialog:false,
+         progress:0,
+         user1:''
     }
 }
 handleClosePic = () => {
-    this.props.onClose(this.props.selectedValue);
-  };
+    this.setState({openPicDialog:false})
+};
     render() {
         const {classes}=this.props
         const { onClose, selectedValue, open } = this.props;
@@ -79,12 +81,17 @@ handleClosePic = () => {
                 </Typography>
             </Toolbar>
             </AppBar>
-            <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" open={this.state.openPicDialog}>
-             <Button onClick={this.handleUpload}>Confirm</Button>
+            <Dialog    onClose={this.handleClosePic}  aria-labelledby="simple-dialog-title" open={this.state.openPicDialog}>
+                <DialogActions>
+                    <Button onClick={this.handleUpload} color="primary" autoFocus>
+                    Confirm
+                    </Button>
+                </DialogActions>
             </Dialog>
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
+           {this.state.progress!==0 ? <progress value={this.state.progress} max='100'></progress>:''} 
             {this.state.alert ?    
             <Collapse in={this.state.alert}>
             <Alert
@@ -103,7 +110,6 @@ handleClosePic = () => {
             Saved Successfully !!
             </Alert>
         </Collapse>:''} 
-                {/* <img src={this.state.url} className={classes.pic}></img> */}
                 {this.state.email ?
                     <Avatar alt="Profile Pic" className={classes.pic} src={this.state.url }>
                     {this.state.email.split('')[0]}
@@ -246,13 +252,15 @@ handleClosePic = () => {
             </div>
         )
     }
-    handleUpload=()=>{
+    handleUpload= async()=>{
         const {image}=this.state
         console.log(image.name)
         const uploadTask=storage.ref(`images/${image.name}`).put(image)
-        uploadTask.on('state_changed',
+        await uploadTask.on('state_changed',
         (snapshot)=>{
-    
+          //progress fn
+          const progress=Math.round((snapshot.bytesTransferred/snapshot.totalBytes)*100)
+          this.setState({progress:progress})
         },
         (error)=>{
           console.log(error)
@@ -343,9 +351,10 @@ handleClosePic = () => {
         }
     }
 
-    submit=(e)=>{
+    submit=async (e)=>{
         e.preventDefault()
         var uemail = firebase.auth().currentUser.email;
+        await
         firebase
         .firestore()
         .collection('users')
@@ -357,6 +366,16 @@ handleClosePic = () => {
             pic:this.state.url ? this.state.url:'',
           })
           console.log('Done Uploading Info')
+        //   .update({
+        //     user1:[{
+        //        about:this.state.aboutS,
+        //        pic:this.state.picS
+        //     }],
+        //    user2:[{
+        //        about:this.state.about,
+        //        pic:this.state.pic
+        //     }],
+        //   })
         }
 
 }

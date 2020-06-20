@@ -15,6 +15,7 @@ import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
 import Menu from './Menu'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+var moment = require('moment-timezone');
 
 class ChatListComponent extends React.Component {
 constructor(props) {
@@ -34,7 +35,7 @@ constructor(props) {
     if(this.props.chats.length > 0) {
       return(
         <div className={classes.root}>
-          <div className={classes.header}> 
+          <div className={classes.header}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -60,7 +61,12 @@ constructor(props) {
                         selected={this.props.selectedChatIndex === _index} 
                         alignItems="flex-start">
                         <ListItemAvatar>
-                          <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}>
+                          <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}
+                         src={
+                         _chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]===_chat.user1[0].email[0].split('')[0] ?
+                         _chat.user1[0].pic:_chat.user2[0].pic
+                         }
+                          >
                             {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
                           </Avatar>
                         </ListItemAvatar>
@@ -70,7 +76,18 @@ constructor(props) {
                             <React.Fragment>
                               <Typography component='span'
                                 color='textPrimary'>
-                                  {_chat.messages[_chat.messages.length - 1].message.substring(0, 30) + ' ...'}
+                                   {_chat.messages[_chat.messages.length - 1].image ? "image":null}
+                                   {_chat.messages[_chat.messages.length - 1].sticker ?  "image":null}
+                                  {_chat.messages[_chat.messages.length - 1].message ? _chat.messages[_chat.messages.length - 1].message.substring(0, 30) + ' ...': null}
+                                  <span style={{float:"right",fontSize:'13px'}}>
+                                    {
+                                     moment().diff(moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)),'days')  >=1
+                                     ?moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('ll')
+                                     :moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('h:mm A')
+                                    }
+                                    {/* {console.log(moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('h:mm A'))}
+                                    {console.log( moment().diff(moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)),'days')  )} */}
+                                  </span>  
                               </Typography>
                             </React.Fragment>
                           }/>
@@ -106,6 +123,7 @@ constructor(props) {
       return(
         <div className={classes.root}>
            <div className={classes.header}> 
+       
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -139,17 +157,34 @@ constructor(props) {
   }
   // handleOnInputChange = event => {
   //   const query = event.target.value;
-
-  //   this.setState(prevState => {
-  //     const filteredData = prevState.data.filter(element => {
-  //       return element.name.toLowerCase().includes(query.toLowerCase());
-  //     });
-
-  //     return {
-  //       query,
-  //       filteredData
-  //     };
-  //   });
+  //   this.props.chats.map((_chat, _index) => {
+  //     return (
+  //       <div key={_index}>
+  //         <ListItem onClick={() => this.selectChat(_index)} 
+  //           className={classes.listItem} 
+  //           selected={this.props.selectedChatIndex === _index} 
+  //           alignItems="flex-start">
+  //           <ListItemAvatar>
+  //             <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}>
+  //              {query=== _chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0] ? console.log('true'):console.log('false')}
+  //             </Avatar>
+  //           </ListItemAvatar>
+  //           <ListItemText 
+  //             primary={_chat.users.filter(_user => _user !== this.props.userEmail)[0]}
+  //             />
+  //             {
+  //               _chat.receiverHasRead === false && !this.userIsSender(_chat) ? 
+  //               <ListItemIcon>
+  //                 <NotificationImportant className={classes.unreadMessage}>
+  //                 </NotificationImportant>
+  //               </ListItemIcon> :
+  //               null
+  //             }
+  //         </ListItem>
+  //         <Divider/>
+  //       </div>
+  //     )
+  //   })
   // };
   // getData = () => {
   //   fetch(`http://localhost:4000/restaurants`)

@@ -84,7 +84,7 @@ class LoginComponent extends React.Component {
                 >
                   Sign In
                 </Button>
-                <Button variant="contained" onClick={this.googleSignin} style={{marginBottom:'30px',background:'white',textTransform:'capitalize'}}>
+                <Button variant="contained" onClick={this.googleSignin} style={{marginBottom:'30px',background:'white',textTransform:'capitalize',width:'100%'}}>
                   <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWUxinfXVrs0myOQO3Nkjgv1cct1VklsUBEkP54pSBBw6-nokz&usqp=CAU' style={{height:'20px',marginRight:'5px'}}></img>
                   Sign in with Google
                 </Button>
@@ -103,41 +103,6 @@ class LoginComponent extends React.Component {
               </form>
             </div>
           </Container>
-            // <main className={classes.main}>
-            //    <CssBaseline></CssBaseline>
-            //    <Paper className={classes.paper}>
-            //        <Typography component='h1' variant='h5'>
-            //            Log In <FontAwesomeIcon icon={faSignInAlt}/>
-            //        </Typography>
-            //        {
-            //            this.state.loginError ?
-            //            <Typography className={classes.errorText}>
-            //             Invalid Login Credentials
-            //            </Typography>:
-            //            null
-            //        }
-            //        <form className={classes.form} onSubmit={(e)=>this.submitLogin(e)}>
-            //            <FormControl required fullWidth margin='normal'>
-            //                <InputLabel htmlFor='login-email-input'>Enter Your Email</InputLabel>
-            //                <Input  autoComplete='email' autoFocus id='login-email-input' onChange={(e)=>this.userTyping('email',e)}>
-            //                </Input>
-            //            </FormControl>
-            //            <FormControl required fullWidth margin='normal'>
-            //                <InputLabel htmlFor='login-password-input'>Enter Your Password</InputLabel>
-            //                <Input type='password' id='login-password-input' onChange={(e)=>this.userTyping('password',e)}>
-            //                </Input>
-            //            </FormControl>
-            //            <Button type='submit' fullWidth variant='contained' color='primary' classname={classes.submit}>
-            //                Log In
-            //            </Button>
-            //        </form>
-                 
-            //        <Typography className={classes.noAccountHeader}>
-            //          <br></br>Don't Have an account ?&nbsp;
-            //          <Link className={classes.signUpLink} to='/signup'> SignUp</Link>
-            //      </Typography>
-            //    </Paper>
-            // </main>
         )
     }
     googleSignin=()=>{

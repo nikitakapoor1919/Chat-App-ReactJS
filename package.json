@@ -18,10 +18,13 @@
     "axios": "^0.19.2",
     "firebase": "^7.14.3",
     "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.6",
+    "moment": "^2.26.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "twilio-video": "^2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",

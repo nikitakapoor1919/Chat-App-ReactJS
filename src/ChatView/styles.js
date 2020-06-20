@@ -11,8 +11,8 @@ const styles = theme => ({
       width: 'calc(100% - 300px)',
       position: 'absolute',
       '@media screen and (max-width: 1024px)': {
-        width:'100%',
-        marginLeft:'0px'
+        // width:'100%',
+        // marginLeft:'0px'
       }
     },
   
@@ -28,7 +28,7 @@ const styles = theme => ({
       width: '300px',
       borderRadius: '10px',
       '@media screen and (max-width: 1024px)': {
-        width: '200px',
+      //  width: '200px',
       }
     },
   
@@ -44,7 +44,7 @@ const styles = theme => ({
       width: '300px',
       borderRadius: '10px',
       '@media screen and (max-width: 1024px)': {
-        width: '200px',
+        // width: '200px',
       }
       
     },
@@ -62,8 +62,8 @@ const styles = theme => ({
       boxSizing: 'border-box',
       zIndex:'99',
       '@media screen and (max-width: 1024px)': {
-        width:'100%',
-        marginLeft:'0px'
+        // width:'100%',
+        // marginLeft:'0px'
       }
       
     },
@@ -75,6 +75,10 @@ const styles = theme => ({
     position: 'absolute',
     top: '10px',
     left: '100px',
+   },
+   image:{
+     height:'300px',
+     width:'250px'
    }
   });
   

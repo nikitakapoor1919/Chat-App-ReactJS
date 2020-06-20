@@ -8,7 +8,8 @@ const styles = theme => ({
       width: '300px',
       boxShadow: '0px 0px 2px black',
       '@media screen and (max-width: 1024px)': {
-        width:'100%'
+       // width:'100%'
+      // overflowY:'hidden'
       }
     },
     listItem: {
@@ -18,7 +19,7 @@ const styles = theme => ({
       borderRadius: '0px'
     },
     unreadMessage: {
-      color: 'red',
+      color: '#075E54',
       position: 'absolute',
       top: '0',
       right: '5px'
@@ -60,10 +61,10 @@ const styles = theme => ({
    
     searchIcon: {
       position: 'absolute',
-      top: '30px',
+      top: '33px',
       zIndex: '99',
       left: '190px',
-      color: 'white'
+      color: 'white',
     },
     inputRoot: {
       color: 'white',
@@ -74,6 +75,11 @@ const styles = theme => ({
       borderRadius: '12px',
       width: '200px',
       height: '35px',
+    },
+    back:{
+      textDecoration: 'none',
+      color: 'white',
+      fontWeight: 'bolder'
     },
   });
   
