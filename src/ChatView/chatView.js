@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 var moment = require('moment-timezone');
 
@@ -83,7 +82,7 @@ reciever=()=>{
                 <div >
                   {_msg.image ? 
                     <div key={_index} className={_msg.sender === this.props.user ? classes.userSent : classes.friendSent} style={{background:'transparent'}}>
-                    <img src={_msg.image} className={classes.image}></img>
+                    <img alt='...' src={_msg.image} className={classes.image}></img>
                     <div style={{textAlign:"right",fontSize:'13px',color:'black'}}>
                       {moment(Number(_msg.timestamp)).format('h:mm A')} 
                      </div>
@@ -91,7 +90,7 @@ reciever=()=>{
                   :
                   _msg.sticker ?
                   <div key={_index} className={_msg.sender === this.props.user ? classes.userSent : classes.friendSent} style={{background:'transparent'}}>
-                    <img src={require(`../images/${_msg.sticker}`)} alt="sticker" className={classes.image}></img>
+                    <img  src={require(`../images/${_msg.sticker}`)} alt="sticker" className={classes.image}></img>
                     <div style={{textAlign:"right",fontSize:'13px',color:'black'}}>
                       {moment(Number(_msg.timestamp)).format('h:mm A')} 
                      </div>

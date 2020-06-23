@@ -10,7 +10,6 @@ import {storage} from  '../index'
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 
-const firebase = require("firebase");
 const tileData = [
   {
     img: require('../images/sticker1.png'),
@@ -92,7 +91,7 @@ class ChatTextBoxComponent extends React.Component {
               {tileData.map((tile) => (
                 <GridListTile key={tile.img}>
                   <span onClick={()=>this.handleUploadSicker(tile.name)} >
-                  <img src={tile.img} className={classes.stickers}/>
+                  <img alt='...' src={tile.img} className={classes.stickers}/>
                   </span>
                 </GridListTile>
               ))}
@@ -108,7 +107,7 @@ class ChatTextBoxComponent extends React.Component {
           onFocus={this.userClickedInput}>
         </TextField>
         <span onClick={this.renderStickers}>
-             <img  className={classes.sticker} src='https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_sticker-512.png'></img>
+             <img alt='...' className={classes.sticker} src='https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_sticker-512.png'></img>
         </span>
         <input
             type="file"

@@ -10,13 +10,6 @@ const styles = theme => ({
         marginRight: 'auto',
       },
     },
-    form: {
-      width: '100%',
-      marginTop: theme.spacing.unit,
-    },
-    submit: {
-        marginTop: theme.spacing.unit * 3,
-    },
     noAccountHeader: {
       width: '100%'
     },

@@ -13,8 +13,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import NotificationImportant from '@material-ui/icons/NotificationImportant';
 import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
 import Menu from './Menu'
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 var moment = require('moment-timezone');
 
 class ChatListComponent extends React.Component {

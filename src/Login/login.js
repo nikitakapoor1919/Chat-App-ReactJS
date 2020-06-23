@@ -7,8 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Container from '@material-ui/core/Container';
@@ -85,7 +83,7 @@ class LoginComponent extends React.Component {
                   Sign In
                 </Button>
                 <Button variant="contained" onClick={this.googleSignin} style={{marginBottom:'30px',background:'white',textTransform:'capitalize',width:'100%'}}>
-                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWUxinfXVrs0myOQO3Nkjgv1cct1VklsUBEkP54pSBBw6-nokz&usqp=CAU' style={{height:'20px',marginRight:'5px'}}></img>
+                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWUxinfXVrs0myOQO3Nkjgv1cct1VklsUBEkP54pSBBw6-nokz&usqp=CAU'  alt='...' style={{height:'20px',marginRight:'5px'}}></img>
                   Sign in with Google
                 </Button>
                 <Grid container>

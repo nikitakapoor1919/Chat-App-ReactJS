@@ -4,14 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import EmailIcon from '@material-ui/icons/Email';
-import InfoIcon from '@material-ui/icons/Info';
-import Slide from '@material-ui/core/Slide';
 
-import InputLabel from '@material-ui/core/InputLabel';
 
 const firebase = require("firebase");
 

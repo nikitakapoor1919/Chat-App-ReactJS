@@ -7,7 +7,7 @@ import LoginComponent from './Login/login';
 import SignupComponent from './SignUp/signup';
 import DashboardComponent from './Dashboard/dashboard';
 import ProfileComponent from './Profile/profile';
-import NotFoundPage from './NotFound/NotFound';
+// import NotFoundPage from './NotFound/NotFound';
 import 'firebase/storage'
 
 const firebase=require("firebase")
