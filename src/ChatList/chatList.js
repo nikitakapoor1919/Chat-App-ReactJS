@@ -35,8 +35,8 @@ constructor(props) {
     if(this.props.chats.length > 0) {
       return(
         <div className={classes.root}>
-          <div className={classes.header}>
-            <div className={classes.searchIcon}>
+          <div className={classes.header} >
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
@@ -48,7 +48,8 @@ constructor(props) {
               inputProps={{ 'aria-label': 'search' }}
               onChange={this.handleOnInputChange}
             />
-            
+             */}
+             <img src='https://i.postimg.cc/3wJNBP7z/logo.png' alt='..'></img>
            <Menu />
           </div>
             <List>
@@ -71,15 +72,22 @@ constructor(props) {
                           </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
-                          primary={_chat.users.filter(_user => _user !== this.props.userEmail)[0]}
+                          primary={
+                            <span className={classes.mail}>
+                                  { _chat.users.filter(_user => _user !== this.props.userEmail)[0] }
+                            </span>
+                            }
+                          className={classes.name}
                           secondary={
                             <React.Fragment>
                               <Typography component='span'
                                 color='textPrimary'>
-                                   {_chat.messages[_chat.messages.length - 1].image ? "image":null}
+                                  <span  className={classes.text}>
+                                  {_chat.messages[_chat.messages.length - 1].image ? "image":null}
                                    {_chat.messages[_chat.messages.length - 1].sticker ?  "image":null}
                                   {_chat.messages[_chat.messages.length - 1].message ? _chat.messages[_chat.messages.length - 1].message.substring(0, 30) + ' ...': null}
-                                  <span style={{float:"right",fontSize:'13px'}}>
+                                  </span>
+                                  <span className={classes.time}>
                                     {
                                      moment().diff(moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)),'days')  >=1
                                      ?moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('ll')
@@ -124,7 +132,7 @@ constructor(props) {
         <div className={classes.root}>
            <div className={classes.header}> 
        
-            <div className={classes.searchIcon}>
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
@@ -136,7 +144,7 @@ constructor(props) {
               inputProps={{ 'aria-label': 'search' }}
               onChange={this.handleOnInputChange}
             />
-            
+             */}
            <Menu />
           </div>
           <Button 

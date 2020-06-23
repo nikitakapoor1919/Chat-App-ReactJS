@@ -15,7 +15,11 @@ const styles = theme => ({
       position: 'absolute',
       width: '350px',
       top: '50px',
-      left: 'calc(50% + 150px - 175px)'
+      left: 'calc(50% + 150px - 175px)',
+      '@media screen and (max-width: 1024px)': {
+        left: 'calc(50% + 150px - 225px)',
+        width: '270px'
+      }
     },
     input: {
     },

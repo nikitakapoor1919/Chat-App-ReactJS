@@ -8,12 +8,15 @@ const styles = theme => ({
       width: '300px',
       boxShadow: '0px 0px 2px black',
       '@media screen and (max-width: 1024px)': {
-       // width:'100%'
+        width:'100px'
       // overflowY:'hidden'
       }
     },
     listItem: {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      '@media screen and (max-width: 1024px)':{
+        height:'100px'
+      }
     },
     newChatBtn: {
       borderRadius: '0px'
@@ -26,7 +29,7 @@ const styles = theme => ({
     },
     header:{
       background:'#075E54',
-      padding:'25px'
+      padding:'24px'
     },
     menu:{
       position: 'absolute',
@@ -51,7 +54,7 @@ const styles = theme => ({
      // left: '240px'
     right: 'calc(100% - 298px)',
     '@media screen and (max-width: 1024px)':{
-      right:'2px'
+      right: 'calc(100% - 98px)',
     }
     },
     green: {
@@ -81,6 +84,32 @@ const styles = theme => ({
       color: 'white',
       fontWeight: 'bolder'
     },
+    name:{
+      '@media screen and (max-width: 1024px)':{
+       position:'relative',
+       top:'40px',
+       left:'-70px',
+      }
+    },
+    text:{
+      '@media screen and (max-width: 1024px)':{
+       display:'none'
+       }
+    },
+    time:{
+      float:"right",
+      fontSize:'13px',
+      '@media screen and (max-width: 1024px)':{
+        float:'left',
+        whiteSpace:'nowrap',
+        fontSize:'10px',
+        }
+    },
+    mail:{
+      '@media screen and (max-width: 1024px)':{
+       fontSize:'.7rem'
+        }
+    }
   });
   
   export default styles;

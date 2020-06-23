@@ -91,8 +91,8 @@ class ChatTextBoxComponent extends React.Component {
             <GridList className={classes.gridList} cols={4.5}>
               {tileData.map((tile) => (
                 <GridListTile key={tile.img}>
-                  <span onClick={()=>this.handleUploadSicker(tile.name)}>
-                  <img src={tile.img} style={{height:'100px',width:'200px',position:'relative',top:'0px',cursor:'pointer'}} />
+                  <span onClick={()=>this.handleUploadSicker(tile.name)} >
+                  <img src={tile.img} className={classes.stickers}/>
                   </span>
                 </GridListTile>
               ))}

@@ -61,6 +61,7 @@ reciever=()=>{
             this.props.chat.users.filter(_usr => _usr !== this.props.user )[0].split('')[0]===this.props.chat.user1[0].email[0].split('')[0] ?
             this.props.chat.user1[0].pic:this.props.chat.user2[0].pic
            }
+
           >
             {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0].split('')[0]}
           </Avatar>

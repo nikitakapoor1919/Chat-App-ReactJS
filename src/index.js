@@ -7,13 +7,22 @@ import LoginComponent from './Login/login';
 import SignupComponent from './SignUp/signup';
 import DashboardComponent from './Dashboard/dashboard';
 import ProfileComponent from './Profile/profile';
+import NotFoundPage from './NotFound/NotFound';
 import 'firebase/storage'
 
 const firebase=require("firebase")
 require("firebase/firestore")
 
 firebase.initializeApp({
-    
+  apiKey: "AIzaSyC08poH07nnZtY77bn2Ut03sOCMt3Y7Fpg",
+  authDomain: "react-chatapp-22693.firebaseapp.com",
+  databaseURL: "https://react-chatapp-22693.firebaseio.com",
+  projectId: "react-chatapp-22693",
+  storageBucket: "react-chatapp-22693.appspot.com",
+  messagingSenderId: "789043871337",
+  appId: "1:789043871337:web:5b4a4e5ae9cd3d7d2facf8",
+  measurementId: "G-P79Z7SB2GJ"
+
 })
 const storage=firebase.storage()
 
@@ -24,6 +33,7 @@ const routing =(
       <Route path='/signup' component={SignupComponent}></Route>
       <Route path='/dashboard' component={DashboardComponent}></Route>
       <Route path='/profile' component={ProfileComponent}></Route>
+      {/* <Route component={NotFoundPage} /> */}
     </div>
   </Router>
 )

@@ -162,7 +162,7 @@ handleClosePic = () => {
                     </Grid>
                     </Grid>
                 </div>
-                <div className={classes.margin}style={{marginLeft:'-5px'}}>
+                <div className={classes.margin}style={{marginLeft:'-60px'}}>
                     <Grid container spacing={1} alignItems="flex-end">
                     <Grid item>
                         <EmailIcon className={classes.icon} />
@@ -172,7 +172,7 @@ handleClosePic = () => {
                             <TextField id="input-with-icon-grid" 
                             name="email"
                             value={this.state.email}
-                            InputProps={{style:{color:'black',width:'225px'}}}
+                            InputProps={{style:{color:'black'}}}
                             disabled
                            // onChange={(e)=>this.userTyping('email',e)}
                             />
@@ -312,8 +312,8 @@ handleClosePic = () => {
     componentWillMount = () => {
         firebase.auth().onAuthStateChanged(async _usr => {
           if(!_usr)
-            this.props.history.push('/login');
-          else {
+           this.props.history.push('/login');
+         else {
               {this.setState({email:_usr.email})}
             firebase
             .firestore().collection('users').doc(_usr.email)

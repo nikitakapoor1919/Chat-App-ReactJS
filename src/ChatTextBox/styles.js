@@ -16,8 +16,8 @@ const styles = theme => ({
       overflow: 'auto',
       width: 'calc(100% - 300px - 50px)',
       '@media screen and (max-width: 1024px)': {
-        width: 'calc(100% - 50px)',
-        left:'10px'
+        left: '105px',
+        width: 'calc(100% - 60px - 50px)'
       }
     },
   
@@ -55,7 +55,16 @@ const styles = theme => ({
       background:
         'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
     },
-  
+     stickers:{
+      height:'100px',
+      width:'200px',
+      position:'relative',
+      top:'0px',
+      cursor:'pointer',
+      '@media screen and (max-width: 1024px)': {
+        width:'100px',
+      }
+     }
   });
   
   export default styles;

@@ -69,9 +69,9 @@ constructor(props) {
     
     componentWillMount = () => {
         firebase.auth().onAuthStateChanged(async _usr => {
-          if(!_usr)
-            this.props.history.push('/login');
-          else {
+        //   if(!_usr)
+        //     this.props.history.push('/login');
+          if(_usr){
               {this.setState({email:_usr.email})}
             firebase
             .firestore().collection('users').doc(_usr.email)
@@ -87,7 +87,7 @@ constructor(props) {
                         name:doc.data().name,
                         url:doc.data().pic
                     })
-                    this.props.getStatusAbout(this.state.about)
+                    this.props.getStatusAbout(this.state.about,this.state.email)
                     this.props.getStatusPic(this.state.url)
                 console.log('Document data:', doc.data());
                 }
