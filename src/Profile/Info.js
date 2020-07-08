@@ -30,7 +30,7 @@ constructor(props) {
     render() {
         const {classes}=this.props
         return (
-            <div className={classes.root} style={{position:'absolute',top:'100px',left:'600px'}}>
+            <div className={classes.root} className={classes.card} >
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div style={{marginBottom:'40px',position:'relative',left:'10px'}}>
@@ -40,7 +40,7 @@ constructor(props) {
                 </div> :null}
 
             {this.state.email ?
-                    <Avatar alt="Profile Pic" className={classes.pic} src={this.state.url } style={{position:'relative',left:'10px'}} >
+                    <Avatar alt="Profile Pic" className={classes.pic} src={this.state.url } style={{position:'relative',margin:'0 auto'}} >
                     {this.state.email.split('')[0]}
                     </Avatar> :
                     <Avatar className={classes.pic} 
@@ -49,10 +49,10 @@ constructor(props) {
                 }
             </div>
             {this.state.value ?
-                <div className={classes.margin} style={{fontWeight:'600',position:'relative',left:'70px'}}>
+                <div className={classes.margin} style={{fontWeight:'600',position:'relative',left:'90px'}}>
                    {this.state.value}
                 </div> :  null}
-            <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px',position:'relative',left:'40px'}}>
+            <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px',position:'relative',left:'90px'}}>
                 {this.state.email}
             </div> 
           </Container>

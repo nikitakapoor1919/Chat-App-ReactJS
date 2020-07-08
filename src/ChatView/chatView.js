@@ -46,7 +46,7 @@ reciever=()=>{
     const { classes } = this.props;
 
     if(this.props.chat === undefined) {
-      return(<main  className={classes.content}></main>);
+      return(<main  className={this.props.style ? classes.content:classes.contentNS}></main>);
     } else if(this.props.chat !== undefined) {
       return(
         <div>
@@ -75,7 +75,7 @@ reciever=()=>{
           </Typography>}
           />
           </div>
-          <main id='chatview-container' className={classes.content}>
+          <main id='chatview-container' className={classes.content} style={{background:"url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDv1P9jgY0zf10uP9wenxHm481IE8RAlsVQMHdY42j2A&usqp=CAU&ec=45673586)"}}>
             {
               this.props.chat.messages.map((_msg, _index) => {
                 return(

@@ -1,4 +1,14 @@
 const styles = theme => ({
+    card:{
+      position:'absolute',
+      height:'370px',
+      width:'420px',
+      top:'100px',
+      left:'600px',
+      filter: 'drop-shadow(5px 5px 5px #514e4e)',
+      background:'white',
+      padding:'20px'
+    },
     large: {
         width: theme.spacing(7),
         height: theme.spacing(7),

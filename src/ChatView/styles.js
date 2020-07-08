@@ -15,7 +15,20 @@ const styles = theme => ({
         marginLeft: '100px',
       }
     },
-  
+    contentNS: {
+      height: 'calc(100vh - 100px)',
+      overflow: 'auto',
+      padding: '25px',
+      marginLeft: '300px',
+      boxSizing: 'border-box',
+      top: '50px',
+      width: 'calc(100% - 300px)',
+      position: 'absolute',
+      '@media screen and (max-width: 1024px)': {
+        width: 'calc(100% - 100px)',
+        marginLeft: '100px',
+      }
+    },
     userSent: {
       float: 'right',
       clear: 'both',
@@ -27,12 +40,15 @@ const styles = theme => ({
       color: 'white',
       width: '300px',
       borderRadius: '10px',
+      opacity:'0.8',
+      marginBottom:'20px',
       '@media screen and (max-width: 1024px)': {
        width: '140px',
       }
     },
   
     friendSent: {
+      marginBottom:'20px',
       float: 'left',
       clear: 'both',
       padding: '20px',

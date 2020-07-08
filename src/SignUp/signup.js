@@ -29,6 +29,7 @@ class SignupComponent extends React.Component {
     render() {
         const {classes}=this.props
         return (
+          <div className={classes.image}>
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
@@ -101,56 +102,8 @@ class SignupComponent extends React.Component {
               </form>
             </div>
           </Container>
-            // <main className={classes.main}>
-            //     <CssBaseline></CssBaseline>
-            //     <Paper className={classes.paper}>
-            //      <Typography component='h1' variant='h5'>
-            //          Sign Up <FontAwesomeIcon icon={faUserPlus}/>
-            //      </Typography>
-            //      {
-            //          this.state.signupError ? 
-            //          <Typography className={classes.errorText} component='h5' variant='h6'>
-            //           {this.state.signupError}
-            //          </Typography>:
-            //          null
-            //      }
-            //      <form  onSubmit={(e)=>this.SubmitSignup(e)}className={classes.form}>
-            //       <FormControl required fullWidth margin='normal'>
-            //           <InputLabel htmlFor='signup-email-input'>
-            //              Enter Your Email
-            //           </InputLabel>
-            //           <Input autoComplete='email' 
-            //             onChange={(e)=> this.userTyping('email',e)}
-            //             autoFocus id='signup-email-input'>
-            //           </Input>
-            //       </FormControl>
-            //       <FormControl required fullWidth margin='normal'>
-            //           <InputLabel htmlFor='signup-password-input'>
-            //              Enter Password
-            //           </InputLabel>
-            //           <Input type='password' 
-            //             onChange={(e)=> this.userTyping('password',e)}
-            //              id='signup-password-input'>
-            //           </Input>
-            //       </FormControl>
-            //       <FormControl required fullWidth margin='normal'>
-            //           <InputLabel htmlFor='signup-password-confirmation-input'>Confirm Password</InputLabel>
-            //           <Input type='password' 
-            //             onChange={(e)=> this.userTyping('passwordConfirmation',e)}
-            //              id='signup-password-confirmation-input'>
-            //           </Input>
-            //       </FormControl>
-            //       <Button type="submit" fullWidth variant='contained' color='primary' className={classes.submit}>
-            //           Sign Up
-            //       </Button>
-            //      </form>
-               
-            //      <Typography className={classes.hasAccountHeader}>
-            //          <br></br>Already Have an account ?&nbsp;
-            //          <Link className={classes.logInLink} to='/login'> LogIn</Link>
-            //      </Typography>
-            //     </Paper>
-            // </main>
+          </div>
+
         )
     }
     formIsValid = () => this.state.password === this.state.passwordConfirmation;

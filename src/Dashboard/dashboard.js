@@ -167,11 +167,12 @@ class DashboardComponent extends React.Component {
         } else {
         this.setState({aboutS: doc.data().about,
         picS:doc.data().pic})
-        console.log(doc.data())
+        console.log('My data',doc.data())
         }
     })
  
     await 
+    console.log('Save Data')
       firebase
         .firestore()
         .collection('chats')

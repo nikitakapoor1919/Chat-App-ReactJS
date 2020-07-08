@@ -22,8 +22,9 @@ const styles = theme => ({
       justifyContent:'center',
       fontSize:'40px',
       fontFamily:'Cambria',
+      position:'relative',
       LetterSpacing:'7px',
-      marginTop:'250px'
+      top:'250px'
     }
   });
   

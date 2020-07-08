@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 
 const firebase = require("firebase");
 
@@ -28,9 +29,11 @@ class LoginComponent extends React.Component {
     render() {
         const {classes}=this.props
         return (
-            <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <div className={classes.paper}>
+             <Grid container component="main" className={classes.root}>
+             <CssBaseline />
+             <Grid item xs={false} sm={4} md={7} className={classes.image} />
+             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+               <div className={classes.paper}>
               <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
               </Avatar>
@@ -100,7 +103,8 @@ class LoginComponent extends React.Component {
                 </Grid>
               </form>
             </div>
-          </Container>
+          </Grid>
+          </Grid>
         )
     }
     googleSignin=()=>{

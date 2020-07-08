@@ -75,7 +75,7 @@ class ChatTextBoxComponent extends React.Component {
     const { onClose, selectedValue, open } = this.props;
 
     return(
-      <div className={classes.chatTextBoxContainer}>
+      <div className={classes.chatTextBoxContainer} >
          <Dialog    onClose={this.handleClosePic}  aria-labelledby="simple-dialog-title" open={this.state.open}>
             <Button onClick={this.handleUpload} color="primary" autoFocus>
             Send
