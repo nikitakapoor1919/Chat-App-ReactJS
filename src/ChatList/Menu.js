@@ -7,8 +7,7 @@ const firebase = require("firebase");
 
 const options = [
 //  'Video Chat Room'
- //'Join Chat Room'
- 'Add new Post'
+// 'Add new Post'
 ];
 const ITEM_HEIGHT = 48;
 
@@ -47,11 +46,14 @@ const ITEM_HEIGHT = 48;
           },
         }}
       > 
-       {/* {options.map((option) => (
+       {options.map((option) => (
           <MenuItem key={option} onClick={handleClose}>
              <a href='/post' style={{ width: '100%', textDecoration: 'none',color:'black'}}> {option}</a>
           </MenuItem>
-        ))} */}
+        ))}
+          <MenuItem>
+             <a href='/chatroom' style={{ width: '100%', textDecoration: 'none',color:'black'}}> Join Chat Room</a>
+          </MenuItem>
         <MenuItem>
         <a href='/profile' style={{ width: '100%', textDecoration: 'none',color:'black'}}>Profile</a>
         </MenuItem>

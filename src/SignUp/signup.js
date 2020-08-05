@@ -29,7 +29,7 @@ class SignupComponent extends React.Component {
     render() {
         const {classes}=this.props
         return (
-          <div className={classes.image}>
+          <div  style={{background:'url(https://images.squarespace-cdn.com/content/v1/5cb06a6cd7456246c1156693/1555335589603-NB3CQ3AHR6SFMOUOUDNZ/ke17ZwdGBToddI8pDm48kN12xG-HbjuR-TIg6OJnzNAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z28Bb07hTaLvQAh-Yxhh8tF7jXoU-0BQhSBP3PCqw3kcShHAH51QaxKq4KdVMVBxpG/Hayls+World+-+Whatsapp+Background+-+01.jpg)',height:'100vh',position:'absolute',top:0,width:'100%'}}>
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>

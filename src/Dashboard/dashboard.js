@@ -69,7 +69,8 @@ class DashboardComponent extends React.Component {
           {/* <Button onClick={this.signOut} className={classes.signOutBtn}>Sign Out</Button> */}
         </div>
       );
-    } else {
+    } 
+    else {
       return(<div className={classes.loading}>LOADING...</div>);
     }
   }
