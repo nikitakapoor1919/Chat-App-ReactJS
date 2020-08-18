@@ -7,7 +7,10 @@ const styles = theme => ({
       left:'600px',
       filter: 'drop-shadow(5px 5px 5px #514e4e)',
       background:'white',
-      padding:'20px'
+      padding:'20px',
+      '@media screen and (max-width: 1024px)': {
+        display:'none'
+        }
     },
     large: {
         width: theme.spacing(7),

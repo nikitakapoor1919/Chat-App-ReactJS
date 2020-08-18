@@ -22,7 +22,8 @@ constructor(props) {
   this.state = {
     query: "",
     data: [],
-    filteredData: []
+    filteredData: [],
+    status:false
   }
 }
 
@@ -32,34 +33,23 @@ constructor(props) {
 
     if(this.props.chats.length > 0) {
       return(
-        <div className={classes.root}>
+        <div className={this.state.status ? classes.rootT: classes.root} >
           <div className={classes.header} >
-            {/* <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={this.handleOnInputChange}
-            />
-             */}
-             <img src='https://i.postimg.cc/3wJNBP7z/logo.png' alt='..'></img>
+            <span  onClick={()=>this.setState({status:!this.state.status})}> 
+            <img src='https://i.postimg.cc/3wJNBP7z/logo.png' alt='..'></img>
+            </span>
            <Menu />
           </div>
             <List>
               {
                 this.props.chats.map((_chat, _index) => {
                   return (
-                    <div key={_index}>
+                    <div key={_index} >
                       <ListItem onClick={() => this.selectChat(_index)} 
                         className={classes.listItem} 
                         selected={this.props.selectedChatIndex === _index} 
                         alignItems="flex-start">
-                        <ListItemAvatar>
+                        <ListItemAvatar className={this.state.status ? classes.shift:''}>
                           <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}
                          src={
                          _chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]===_chat.user1[0].email[0].split('')[0] ?
@@ -70,6 +60,7 @@ constructor(props) {
                           </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
+                        className={this.state.status ? classes.shift:''}
                           primary={
                             <span className={classes.mail}>
                                   { _chat.users.filter(_user => _user !== this.props.userEmail)[0] }
@@ -91,8 +82,6 @@ constructor(props) {
                                      ?moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('ll')
                                      :moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('h:mm A')
                                     }
-                                    {/* {console.log(moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)).format('h:mm A'))}
-                                    {console.log( moment().diff(moment(Number(_chat.messages[_chat.messages.length - 1].timestamp)),'days')  )} */}
                                   </span>  
                               </Typography>
                             </React.Fragment>
@@ -129,20 +118,6 @@ constructor(props) {
       return(
         <div className={classes.root}>
            <div className={classes.header}> 
-       
-            {/* <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={this.handleOnInputChange}
-            />
-             */}
            <Menu />
           </div>
           <Button 
@@ -161,52 +136,7 @@ constructor(props) {
       );
     }
   }
-  // handleOnInputChange = event => {
-  //   const query = event.target.value;
-  //   this.props.chats.map((_chat, _index) => {
-  //     return (
-  //       <div key={_index}>
-  //         <ListItem onClick={() => this.selectChat(_index)} 
-  //           className={classes.listItem} 
-  //           selected={this.props.selectedChatIndex === _index} 
-  //           alignItems="flex-start">
-  //           <ListItemAvatar>
-  //             <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}>
-  //              {query=== _chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0] ? console.log('true'):console.log('false')}
-  //             </Avatar>
-  //           </ListItemAvatar>
-  //           <ListItemText 
-  //             primary={_chat.users.filter(_user => _user !== this.props.userEmail)[0]}
-  //             />
-  //             {
-  //               _chat.receiverHasRead === false && !this.userIsSender(_chat) ? 
-  //               <ListItemIcon>
-  //                 <NotificationImportant className={classes.unreadMessage}>
-  //                 </NotificationImportant>
-  //               </ListItemIcon> :
-  //               null
-  //             }
-  //         </ListItem>
-  //         <Divider/>
-  //       </div>
-  //     )
-  //   })
-  // };
-  // getData = () => {
-  //   fetch(`http://localhost:4000/restaurants`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       const { query } = this.state;
-  //       const filteredData = data.filter(element => {
-  //         return element.name.toLowerCase().includes(query.toLowerCase());
-  //       });
-
-  //       this.setState({
-  //         data,
-  //         filteredData
-  //       });
-  //     });
-  // };
+  
   userIsSender = (chat) => chat.messages[chat.messages.length - 1].sender === this.props.userEmail;
   newChat = () => this.props.newChatBtnFn();
   selectChat = (index) => this.props.selectChatFn(index);

@@ -12,11 +12,26 @@ const styles = theme => ({
       // overflowY:'hidden'
       }
     },
+    rootT: {
+      backgroundColor: '#e3eae5',
+       height:'100%',
+      position: 'absolute',
+      left: '0',
+      zIndex:99,
+      width: '300px',
+      boxShadow: '0px 0px 2px black',
+      '@media screen and (max-width: 1024px)': {
+        width:'300px'
+      }
+    },
     listItem: {
       cursor: 'pointer',
       '@media screen and (max-width: 1024px)':{
         height:'100px'
       }
+    },
+    shift:{
+      marginLeft:100
     },
     newChatBtn: {
       borderRadius: '0px'

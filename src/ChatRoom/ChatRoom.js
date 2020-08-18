@@ -17,6 +17,8 @@ import SendIcon from '@material-ui/icons/Send';
 import styles from './styles';
 import { withStyles } from '@material-ui/core/styles';
 import ChatSee from './ChatSee'
+import AppBar from '@material-ui/core/AppBar';
+
 const firebase = require("firebase");
 
  class ChatRoom extends Component {
@@ -173,7 +175,7 @@ const firebase = require("firebase");
          )
       });
     return (
-      <div>
+      <div style={{overflowX:'hidden'}}>
         <Grid container component={Paper} className={classes.chatSection}>
             <Grid item xs={3} className={classes.borderRight500}>
                 <List>

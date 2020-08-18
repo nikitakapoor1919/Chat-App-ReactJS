@@ -66,11 +66,11 @@ const styles = theme => ({
     },
   
     chatHeader: {
-      width: 'calc(100% - 301px)',
-      height: '85px',
+      width: 'calc(100% - 300px)',
+      height: '84px',
       background:'#075E54',
       position: 'fixed',
-      marginLeft: '301px',
+      marginLeft: '300px',
       fontSize: '18px',
       textAlign: 'center',
       color: 'white',
@@ -78,8 +78,8 @@ const styles = theme => ({
       boxSizing: 'border-box',
       zIndex:'99',
       '@media screen and (max-width: 1024px)': {
-        width: 'calc(100% - 101px)',
-        marginLeft: '101px',
+        width: 'calc(100% - 100px)',
+        marginLeft: '100px',
       }
       
     },

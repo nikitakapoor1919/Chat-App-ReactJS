@@ -30,7 +30,7 @@ constructor(props) {
     render() {
         const {classes}=this.props
         return (
-            <div className={classes.root} className={classes.card} >
+            <div className={classes.card} >
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div style={{marginBottom:'40px',position:'relative',left:'10px'}}>
