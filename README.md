@@ -14,4 +14,4 @@ Write these steps on Command Line
 
 <a href='https://react-chatapp-22693.web.app//'>Live Demo</a>
 
-![Alt Text](https://giphy.com/gifs/QTsR5pnIq1u4FqiN69/html5)
+![Alt Text](https://media1.giphy.com/media/JtHTVP6LSZRGb8Opcz/giphy.gif)
