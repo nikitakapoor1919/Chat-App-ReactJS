@@ -35,7 +35,7 @@ componentDidMount = () => {
 componentDidUpdate = () => {
   const container = document.getElementById('chatview-container');
   if(container)
-    {container.scrollTo(0, container.scrollHeight); console.log(container.scrollHeight)   }
+    {container.scrollTo(0, container.scrollHeight);}
 }
 
 reciever=()=>{

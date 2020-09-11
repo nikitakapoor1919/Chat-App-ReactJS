@@ -31,7 +31,9 @@ const styles = theme => ({
       }
     },
     shift:{
-      marginLeft:100
+      '@media screen and (max-width: 1024px)':{
+        marginLeft:100
+      }
     },
     newChatBtn: {
       borderRadius: '0px'
