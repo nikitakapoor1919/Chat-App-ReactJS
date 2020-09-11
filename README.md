@@ -12,6 +12,6 @@ Write these steps on Command Line
 2. cd leaderboard
 3. code .(To Open VS Code)
 
-<a href='https://react-chatapp-22693.web.app//'>Live Demo</a>
+<a href='https://react-chatapp-22693.firebaseapp.com/'>Live Demo</a>
 
 ![Alt Text](https://media4.giphy.com/media/ibdnpzxWVq2jAzJSPJ/200w.webp)
