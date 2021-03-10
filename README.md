@@ -1,16 +1,22 @@
-# Chat-App-ReactJS
+<b><h1 align=center> Chat-App-ReactJS </h1></b>
+
+## <strong>About 🚩 [![GitHub contributors](https://img.shields.io/github/contributors/nikitakapoor1919/Chat-App-ReactJS.svg)](https://github.com/nikitakapoor1919/Chat-App-ReactJS/graphs/contributors/)
 Chat Web Application using firebase as backend .Users can create account or login by gmail.You can send images and stickers while chatting.Users can also join Group Chat.
 
-### Steps to Run:
-1. Clone This App
-2. npm install
-3. npm run start
+## <strong>Getting Started</strong> 🚀 
+```
+# Fork and Clone this Application
+$ git clone https://github.com/nikitakapoor1919/Chat-App-ReactJS.git
 
-### Steps To Clone:
-Write these steps on Command Line
-1. git clone https://github.com/nikitakapoor1919/Chat-App-ReactJS.git
-2. cd Chat-App-ReactJS
-3. code .(To Open VS Code)
+# Go into the repository
+$ cd Chat-App-ReactJS
+
+# Install Dependencies
+$ npm install
+
+# Run this website 
+$ npm start
+```
 
 <a href='https://react-chatapp-22693.firebaseapp.com/'>Live Demo</a>
 
