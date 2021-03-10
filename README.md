@@ -29,4 +29,4 @@ $ npm start
 
 <a href='https://react-chatapp-22693.firebaseapp.com/'>Live Demo</a>
 
-![Alt Text](https://media4.giphy.com/media/ibdnpzxWVq2jAzJSPJ/200w.webp)
+![Alt Text](https://media.giphy.com/media/pMEIrvpm2SnjVbzSem/giphy.gif)
