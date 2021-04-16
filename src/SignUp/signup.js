@@ -136,7 +136,11 @@ class SignupComponent extends React.Component {
           .createUserWithEmailAndPassword(this.state.email,this.state.password)
           .then(authRes=>{
               const userObj={
-                  email:authRes.user.email
+                  email:authRes.user.email,
+                  isOnline:true,
+                  name:authRes.user.email.split('@')[0],
+                  about:"Available",
+                  pic:" " 
               }
               firebase
               .firestore()

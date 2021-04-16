@@ -30,7 +30,7 @@ class NewChatComponent extends React.Component {
                   margin="normal"
                   required
                   fullWidth
-                  label="  Enter Your Friend's Email"
+                  label="  Enter Email"
                   name="username"
                   autoFocus
                   onChange={(e) => this.userTyping('username', e)} 
@@ -43,31 +43,14 @@ class NewChatComponent extends React.Component {
                   autoComplete='off'
                   fullWidth
                   name="message"
-                  label=" Enter Your Message"
+                  multiline
+                  rows={5}
+                  // rowsMax={4}
+                  label="Message"
                   onChange={(e) => this.userTyping('message', e)} 
                   id='new-chat-message'
                 />
-            {/* <FormControl fullWidth>
-              <InputLabel htmlFor='new-chat-username'>
-                  Enter Your Friend's Email
-              </InputLabel>
-              <Input required 
-                className={classes.input}
-                autoFocus 
-                onChange={(e) => this.userTyping('username', e)} 
-                id='new-chat-username'>
-              </Input>
-            </FormControl>
-            <FormControl fullWidth>
-              <InputLabel htmlFor='new-chat-message'>
-                  Enter Your Message
-              </InputLabel>
-              <Input required 
-                className={classes.input}
-                onChange={(e) => this.userTyping('message', e)} 
-                id='new-chat-message'>
-              </Input>
-            </FormControl> */}
+            
             <Button fullWidth variant='contained' style={{background:'#075E54',color:'white'}} className={classes.submit} type='submit'>Send</Button>
           </form>
           {

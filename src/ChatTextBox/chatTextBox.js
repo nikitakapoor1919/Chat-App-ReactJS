@@ -107,7 +107,7 @@ class ChatTextBoxComponent extends React.Component {
           onFocus={this.userClickedInput}>
         </TextField>
         <span onClick={this.renderStickers}>
-             <img alt='...' className={classes.sticker} src='https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_sticker-512.png'></img>
+             <img alt='stickers' className={classes.sticker} src='https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_sticker-512.png'></img>
         </span>
         <input
             type="file"
@@ -118,7 +118,7 @@ class ChatTextBoxComponent extends React.Component {
         />
         <AttachFileIcon
         onClick={()=>{this.upload.click()}}
-        style={{marginRight:'20px',cursor:'pointer',position:'relative',top:'-5px'}}
+        style={{marginRight:'20px',cursor:'pointer',position:'relative'}}
         > 
         </AttachFileIcon>
         <Send onClick={this.submitMessage} className={classes.sendBtn}></Send>

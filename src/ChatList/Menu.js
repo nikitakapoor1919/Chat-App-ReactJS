@@ -7,18 +7,30 @@ const firebase = require("firebase");
 
 const options = [
 //  'Video Chat Room'
- 'Add new Post'
+//  'Add new Post'
 ];
 const ITEM_HEIGHT = 48;
 
- function LongMenu() {
+ function LongMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [email, setEmail] = React.useState(props.email);
   const open = Boolean(anchorEl);
-
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const signOut = () => firebase.auth().signOut();
+  const signOut = async () => {
+    // await firebase
+    //     .firestore()
+    //     .collection('users')
+    //     .doc(email)
+    //     .update({
+    //         isOnline:false,
+    //       })
+    //       console.log('Done Uploading Info')
+    await firebase.auth().signOut();
+    console.log("Email "+ email)
+    }
   const handleClose = (index) => {
     setAnchorEl(null);
   };
@@ -29,7 +41,7 @@ const ITEM_HEIGHT = 48;
         aria-controls="long-menu"
         aria-haspopup="true"
         onClick={handleClick}
-        style={{    position: 'absolute',top: '15px', right: '5px' }}
+        style={{    position: 'absolute',top: '25px', right: '5px' }}
       >
         <MoreVertIcon style={{ position: 'absolute', top: '5px',right: '5px', cursor:'pointer',color:'white'}} />
       </IconButton>
@@ -57,6 +69,9 @@ const ITEM_HEIGHT = 48;
         <MenuItem>
         <a href='/profile' style={{ width: '100%', textDecoration: 'none',color:'black'}}>Profile</a>
         </MenuItem>
+        {/* <MenuItem>
+        <a href='/video-call' style={{ width: '100%', textDecoration: 'none',color:'black'}}>Video Call</a>
+        </MenuItem> */}
         <MenuItem  onClick={signOut}>
             SignOut
         </MenuItem>

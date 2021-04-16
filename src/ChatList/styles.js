@@ -1,16 +1,39 @@
 const styles = theme => ({
     root: {
       backgroundColor: '#e3eae5',
-     // height: 'calc(100% - 35px)',
        height:'100%',
       position: 'absolute',
       left: '0',
-      width: '300px',
+      top:'0',
+      width: '250px',
       boxShadow: '0px 0px 2px black',
       '@media screen and (max-width: 1024px)': {
-        width:'100px'
-      // overflowY:'hidden'
+        // width:'100px'
+        display:"none"
       }
+    },
+    dot: {
+      height: 12,
+      width: 12,
+      backgroundColor: "#bbb",
+      borderRadius: "50%",
+      display: "inline-block",
+    },
+    onlineDot: {
+      height: 12,
+      width: 12,
+      backgroundColor: "#008000",
+      borderRadius: "50%",
+      display: "inline-block",
+    },
+    rootDrawer: {
+      backgroundColor: '#e3eae5',
+       height:'100%',
+      position: 'absolute',
+      left: '0',
+      // top:'0',
+      width: '250px',
+      boxShadow: '0px 0px 2px black',
     },
     rootT: {
       backgroundColor: '#e3eae5',
@@ -20,20 +43,20 @@ const styles = theme => ({
       zIndex:99,
       width: '300px',
       boxShadow: '0px 0px 2px black',
-      '@media screen and (max-width: 1024px)': {
-        width:'300px'
-      }
+      // '@media screen and (max-width: 1024px)': {
+      //   width:'300px'
+      // }
     },
     listItem: {
       cursor: 'pointer',
-      '@media screen and (max-width: 1024px)':{
-        height:'100px'
-      }
+      // '@media screen and (max-width: 1024px)':{
+      //   height:'100px'
+      // }
     },
     shift:{
-      '@media screen and (max-width: 1024px)':{
-        marginLeft:100
-      }
+      // '@media screen and (max-width: 1024px)':{
+      //   marginLeft:100
+      // }
     },
     newChatBtn: {
       borderRadius: '0px'
@@ -68,11 +91,7 @@ const styles = theme => ({
       backgroundColor: '#128C7E',
       borderRadius: '50%',
       bottom: '50px',
-     // left: '240px'
-    right: 'calc(100% - 298px)',
-    '@media screen and (max-width: 1024px)':{
-      right: 'calc(100% - 98px)',
-    }
+      right: 'calc(100% - 250px)',
     },
     green: {
       color: '#fff',
@@ -102,30 +121,37 @@ const styles = theme => ({
       fontWeight: 'bolder'
     },
     name:{
-      '@media screen and (max-width: 1024px)':{
-       position:'relative',
-       top:'40px',
-       left:'-70px',
-      }
+      // '@media screen and (max-width: 1024px)':{
+      //  position:'relative',
+      //  top:'40px',
+      //  left:'-70px',
+      // }
     },
     text:{
-      '@media screen and (max-width: 1024px)':{
-       display:'none'
-       }
+      // '@media screen and (max-width: 1024px)':{
+      //  display:'none'
+      //  }
     },
     time:{
       float:"right",
       fontSize:'13px',
-      '@media screen and (max-width: 1024px)':{
-        float:'left',
-        whiteSpace:'nowrap',
-        fontSize:'10px',
-        }
+      // '@media screen and (max-width: 1024px)':{
+      //   float:'left',
+      //   whiteSpace:'nowrap',
+      //   fontSize:'10px',
+      //   }
     },
     mail:{
-      '@media screen and (max-width: 1024px)':{
-       fontSize:'.7rem'
-        }
+      whiteSpace: "nowrap",
+      width: 150,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      // '@media screen and (max-width: 1024px)':{
+      //  fontSize:'.7rem'
+      //   }
+    },
+    img:{
+      height:32
     }
   });
   

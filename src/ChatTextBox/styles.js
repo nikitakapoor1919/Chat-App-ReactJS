@@ -1,31 +1,31 @@
 const styles = theme => ({
 
     sendBtn: {
-      color: 'blue',
+      color: '#075E54',
       cursor: 'pointer',
       '&:hover': {
-        color: 'gray'
+        color: '#4caf50'
       }
     },
   
     chatTextBoxContainer: {
       position: 'absolute',
       bottom: '15px',
-      left: '315px',
+      left: '265px',
       boxSizing: 'border-box',
       overflow: 'auto',
-      width: 'calc(100% - 300px - 50px)',
+      width: 'calc(100% - 250px - 50px)',
       '@media screen and (max-width: 1024px)': {
-        left: '105px',
-        width: 'calc(100% - 60px - 50px)'
+        left: '10px',
+        width: 'calc(100% - 10px - 10px)'
       }
     },
   
     chatTextBox: {
-      width: 'calc(100% - 100px)'
+      width: 'calc(100% - 100px)',
     },
     sticker:{
-      height:'30px',
+      height:'25px',
       cursor:'pointer'
     },
     listSticker:{

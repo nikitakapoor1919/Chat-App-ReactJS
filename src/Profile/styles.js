@@ -1,16 +1,20 @@
 const styles = theme => ({
     card:{
       position:'absolute',
-      height:'370px',
-      width:'420px',
+      // height:'370px',
+      // width:'420px',
       top:'100px',
-      left:'600px',
+      left:'400px',
       filter: 'drop-shadow(5px 5px 5px #514e4e)',
-      background:'white',
+      margin:"0 auto",
+      height:"auto",
+      background:'#e3eae5',
+      width:"50%",
       padding:'20px',
       '@media screen and (max-width: 1024px)': {
-        display:'none'
-        }
+        width:"90%",
+        left:20,
+      }
     },
     large: {
         width: theme.spacing(7),
@@ -52,7 +56,7 @@ const styles = theme => ({
       } ,
       appBar: {
         position: 'relative',
-        background:'#075E54'
+        background:'#075E54',
       },
       title: {
         marginLeft: theme.spacing(2),
@@ -74,7 +78,7 @@ const styles = theme => ({
         '@media screen and (max-width: 1024px)': {
         display:'none'
         }
-      }
+      },
   });
   
   export default styles;

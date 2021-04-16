@@ -11,14 +11,18 @@ const styles = theme => ({
       },
     },
     paper: {
-      padding: `${theme.spacing() * 2}px ${theme.spacing() * 3}px ${theme.spacing() * 3}px`,
-      position: 'absolute',
-      width: '350px',
-      top: '50px',
-      left: 'calc(50% + 150px - 175px)',
+      position:'absolute',
+      top:'150px',
+      left:'400px',
+      filter: 'drop-shadow(5px 5px 5px #514e4e)',
+      margin:"0 auto",
+      height:"auto",
+      background:'#e3eae5',
+      width:"50%",
+      padding:'20px',
       '@media screen and (max-width: 1024px)': {
-        left: 'calc(50% + 150px - 225px)',
-        width: '270px'
+        width:"90%",
+        left:20,
       }
     },
     input: {

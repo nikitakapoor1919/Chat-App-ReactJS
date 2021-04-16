@@ -29,10 +29,10 @@ class LoginComponent extends React.Component {
     render() {
         const {classes}=this.props
         return (
-             <Grid container component="main" className={classes.root}>
+             <Grid container component="main" className={classes.root} >
              <CssBaseline />
              <Grid item xs={false} sm={4} md={7} className={classes.image} />
-             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square style={{backgroundColor:"#f0f4f5"}}>
                <div className={classes.paper}>
               <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
@@ -86,7 +86,7 @@ class LoginComponent extends React.Component {
                   Sign In
                 </Button>
                 <Button variant="contained" onClick={this.googleSignin} style={{marginBottom:'30px',background:'white',textTransform:'capitalize',width:'100%'}}>
-                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWUxinfXVrs0myOQO3Nkjgv1cct1VklsUBEkP54pSBBw6-nokz&usqp=CAU'  alt='...' style={{height:'20px',marginRight:'5px'}}></img>
+                  <img src='https://raw.githubusercontent.com/nikitakapoor1919/Images/main/google.png'  alt='google' style={{height:'20px',marginRight:'5px'}}></img>
                   Sign in with Google
                 </Button>
                 <Grid container>
@@ -107,12 +107,28 @@ class LoginComponent extends React.Component {
           </Grid>
         )
     }
-    googleSignin=()=>{
-      
-      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    googleSignin=async()=>{
+      await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result)=>{
         console.log(result)
         console.log('Success')
+        
+        firebase
+        .firestore()
+        .collection('users')
+        .doc(result.user.email)
+        .update({
+            email:result.user.email ,
+            name:result.user.displayName,
+            isOnline:true,
+            about:"Available",
+            pic:"" 
+          })
+          console.log('Done Uploading Info')
+        
+        console.log('User'+result.user)
+        console.log('Email'+result.user.email)
+        console.log("name: "+ result.user.displayName)
         this.props.history.push('/dashboard')
       })
       .catch((err)=>{
@@ -133,13 +149,20 @@ class LoginComponent extends React.Component {
         }
     }
 
-    submitLogin=(e)=>{
+    submitLogin= (e)=>{
         e.preventDefault()
-
         firebase
         .auth()
         .signInWithEmailAndPassword(this.state.email,this.state.password)
         .then(()=>{
+          firebase
+          .firestore()
+          .collection('users')
+          .doc(this.state.email)
+          .update({
+              isOnline:true,
+            })
+            console.log('Done Uploading Info')
            this.props.history.push('/dashboard')
         },err=>{
             this.setState({loginError:'Server error'})

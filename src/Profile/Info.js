@@ -24,7 +24,8 @@ constructor(props) {
          image:null,
          url:'',
          openPicDialog:false,
-         progress:0
+         progress:0,
+         isOnline:false
     }
 }
     render() {
@@ -33,28 +34,28 @@ constructor(props) {
             <div className={classes.card} >
             <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div style={{marginBottom:'40px',position:'relative',left:'10px'}}>
+            <div style={{textAlign:'center'}}>
             {this.state.name ?
                 <div className={classes.welcome} style={{textAlign:'center'}} >
                   Welcome, {this.state.name}
                 </div> :null}
 
             {this.state.email ?
-                    <Avatar alt="Profile Pic" className={classes.pic} src={this.state.url } style={{position:'relative',margin:'0 auto'}} >
+                    <Avatar alt="Profile Pic" className={classes.pic} src={this.state.url } style={{margin:'0 auto'}} >
                     {this.state.email.split('')[0]}
                     </Avatar> :
                     <Avatar className={classes.pic} 
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRsxzjLUwOFHAGak77d2YICyOjqeLoKKH_kZbPuAeYgIhaDLzSx&usqp=CAU'>
+                    src='https://raw.githubusercontent.com/nikitakapoor1919/Images/main/default-pic.png'>
                     </Avatar>
                 }
-            </div>
             {this.state.value ?
-                <div className={classes.margin} style={{fontWeight:'600',position:'relative',left:'90px'}}>
+                <div className={classes.margin} style={{fontWeight:'600'}}>
                    {this.state.value}
                 </div> :  null}
-            <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px',position:'relative',left:'90px'}}>
+            <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px'}}>
                 {this.state.email}
             </div> 
+            </div>
           </Container>
             </div>
         )
@@ -78,9 +79,10 @@ constructor(props) {
                         value:doc.data().about,
                         email:doc.data().email,
                         name:doc.data().name,
-                        url:doc.data().pic
+                        url:doc.data().pic,
+                        isOnline:doc.data().isOnline
                     })
-                    this.props.getStatusAbout(this.state.about,this.state.email)
+                    this.props.getStatusAbout(this.state.about,this.state.email,this.state.isOnline,this.state.name)
                     this.props.getStatusPic(this.state.url)
                 console.log('Document data:', doc.data());
                 }

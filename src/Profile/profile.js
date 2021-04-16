@@ -68,7 +68,7 @@ handleClosePic = () => {
         const {classes}=this.props
         const { onClose, selectedValue, open } = this.props;
         return (
-            <div style={{background:'url(https://images.squarespace-cdn.com/content/v1/5cb06a6cd7456246c1156693/1555335589603-NB3CQ3AHR6SFMOUOUDNZ/ke17ZwdGBToddI8pDm48kN12xG-HbjuR-TIg6OJnzNAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z28Bb07hTaLvQAh-Yxhh8tF7jXoU-0BQhSBP3PCqw3kcShHAH51QaxKq4KdVMVBxpG/Hayls+World+-+Whatsapp+Background+-+01.jpg)',height:'100vh'}}>
+            <div style={{background:'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/background.jpg)',height:'100vh'}}>
                 <AppBar className={classes.appBar}>
             <Toolbar>
                 <a href='/dashboard' className={classes.back}>
@@ -115,7 +115,7 @@ handleClosePic = () => {
                     {this.state.email.split('')[0]}
                     </Avatar> :
                     <Avatar className={classes.pic} 
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRsxzjLUwOFHAGak77d2YICyOjqeLoKKH_kZbPuAeYgIhaDLzSx&usqp=CAU'>
+                    src='https://raw.githubusercontent.com/nikitakapoor1919/Images/main/default-pic.png'>
                     </Avatar>
                 }
                 <div className={classes.margin}>
@@ -155,7 +155,7 @@ handleClosePic = () => {
                         value={this.state.name ? this.state.name :''}
                         onChange={(e)=>this.userTyping('name',e)}
                         />
-                        <Button type='submit'  ><SaveIcon className={classes.edit} onClick={()=>{this.setState({alert:true})}}
+                        <Button type='submit'><SaveIcon className={classes.edit} onClick={()=>{this.setState({alert:true})}}
                         />
                         </Button>
                       </form>      
@@ -221,7 +221,6 @@ handleClosePic = () => {
                             </Button>
                             <Button
                             type="submit"
-                            style={{marginLeft:'70px'}}
                             >
                             <SaveIcon className={classes.edit} onClick={()=>{this.setState({alert:true,open:false})}}/>
                             </Button>
@@ -366,16 +365,7 @@ handleClosePic = () => {
             pic:this.state.url ? this.state.url:'',
           })
           console.log('Done Uploading Info')
-        //   .update({
-        //     user1:[{
-        //        about:this.state.aboutS,
-        //        pic:this.state.picS
-        //     }],
-        //    user2:[{
-        //        about:this.state.about,
-        //        pic:this.state.pic
-        //     }],
-        //   })
+
         }
 
 }

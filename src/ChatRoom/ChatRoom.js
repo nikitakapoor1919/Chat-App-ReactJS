@@ -16,7 +16,6 @@ import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 import styles from './styles';
 import { withStyles } from '@material-ui/core/styles';
-import ChatSee from './ChatSee'
 import AppBar from '@material-ui/core/AppBar';
 
 const firebase = require("firebase");
@@ -155,7 +154,7 @@ const firebase = require("firebase");
                 >
                   {messages[key].email ? messages[key].email[0].split('')[0]:''}
                 </Avatar>
-             <div style={{textAlign:"right",fontSize:'13px',marginRight:'10px',position:'relative',top:-30}}>~{messages[key].email}</div>   
+             <div style={{textAlign:"right",fontSize:'13px',marginRight:'10px',position:'relative',top:-30}}>~{messages[key].email.split('@')[0]}</div>   
             <span> {messages[key].text}</span>
             <div style={{textAlign:"right",fontSize:'13px',marginRight:'10px'}}>
             <span >{Moment(messages[key].createdAt).format("hh:mm")}</span>
@@ -224,7 +223,7 @@ const firebase = require("firebase");
                         />
                   </Grid>
                     <Grid xs={1} align="right">
-                        <Fab color="primary" aria-label="add"><SendIcon   onClick={this.handleSubmit.bind(this)}></SendIcon></Fab>
+                        <Fab  aria-label="add"><SendIcon   onClick={this.handleSubmit.bind(this)}></SendIcon></Fab>
                     </Grid>
                 </Grid>
                 </form>
