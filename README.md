@@ -1,6 +1,6 @@
 <b><h1 align=center> Chat-App-ReactJS </h1></b>
 
-## <strong>About 🚩 [![GitHub contributors](https://img.shields.io/github/contributors/nikitakapoor1919/Chat-App-ReactJS.svg)](https://github.com/nikitakapoor1919/Chat-App-ReactJS/graphs/contributors/)</strong>
+## <strong>About 🚩 
 Chat Web Application using firebase as backend .Users can create account or login by gmail.You can send images and stickers while chatting.Users can also join Group Chat.
 
 ## <strong>Technology Stack 🔥:</strong>
