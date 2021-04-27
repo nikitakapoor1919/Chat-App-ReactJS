@@ -15,18 +15,43 @@ import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
 import Menu from './Menu'
 var moment = require('moment-timezone');
 
+const firebase = require("firebase");
+
 class ChatListComponent extends React.Component {
 constructor(props) {
   super(props)
-
+  this.ref = firebase.firestore().collection('users');
+   this.unsubscribe = null;
   this.state = {
     query: "",
     data: [],
     filteredData: [],
     status:false,
+    users:[]
   }
 }
+onCollectionUpdate = (querySnapshot) => {
+  const users = [];
+  querySnapshot.forEach((doc) => {
+    const { email,isOnline,pic,about} = doc.data();
+    console.log("Data",doc.id);
+    users.push({
+      key: doc.id,
+      doc, // DocumentSnapshot
+      email,
+      isOnline,
+      pic,
+      about
+    });
+  });
+  this.setState({
+    users
+ });
+}
 
+componentDidMount() {
+  this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+}
   render() {
 
     const { classes } = this.props;
@@ -38,6 +63,7 @@ constructor(props) {
             <span  onClick={()=>this.setState({status:!this.state.status})}> 
             <img src='https://raw.githubusercontent.com/nikitakapoor1919/Images/main/apple-touch-icon.png' alt='Logo' className={classes.img}></img>
             </span>
+            {console.log("Email"+this.props.userEmail)}
            <Menu email={this.props.userEmail} />
           </div>
             <List>
@@ -49,17 +75,18 @@ constructor(props) {
                         className={classes.listItem} 
                         selected={this.props.selectedChatIndex === _index} 
                         alignItems="flex-start">
-                        <ListItemAvatar className={this.state.status ? classes.shift:''}>
+                        {this.state.users.map((user) => (
+                          user.email== _chat.users.filter(_user => _user !== this.props.userEmail)?
+                          <ListItemAvatar className={this.state.status ? classes.shift:''}>
                           <Avatar className={classes.green} alt="Remy Sharp" style={{textTransform:'uppercase'}}
-                         src={
-                        //  _chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]===_chat.user1[0].email[0].split('')[0] ?
-                        //  _chat.user1[0].pic:_chat.user2[0].pic
-                        _chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]
-                         }
+                        src={
+                        user.pic!="" ? user.pic: user.email.split('')[0]
+                        }
                           >
                             {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
                           </Avatar>
-                        </ListItemAvatar>
+                      </ListItemAvatar>:''
+                        ))}
                         <ListItemText 
                         className={this.state.status ? classes.shift:''}
                           primary={

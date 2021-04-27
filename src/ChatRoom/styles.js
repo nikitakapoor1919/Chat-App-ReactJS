@@ -6,26 +6,28 @@
         width: '100%',
         height: '100vh'
       },
-      // content: {
-      //   overflow: 'auto',
-      //   boxSizing: 'border-box',
-      //   overflowY: 'scroll',
-      // },
       colorW:{
         color:'white'
+      },
+      sendBtn: {
+        color: '#075E54',
+        cursor: 'pointer',
+        '&:hover': {
+          color: '#4caf50'
+        }
       },
       heading:{
         textTransform:'uppercase',
         textAlign:'center',
         fontWeight:800,
-        color:'white'
+        // color:'white'
       },
       headBG: {
           backgroundColor: '#e0e0e0'
       },
       borderRight500: {
           borderRight: '1px solid #e0e0e0',
-          background:'rgba(3, 42, 51, 0.72) none repeat scroll 0% 0%',
+          background:'#e3eae5',
           '@media screen and (max-width: 1024px)': {
            display:'none'
            }

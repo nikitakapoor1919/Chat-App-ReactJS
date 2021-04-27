@@ -132,23 +132,16 @@ const styles = theme => ({
       //  display:'none'
       //  }
     },
+    
     time:{
       float:"right",
       fontSize:'13px',
-      // '@media screen and (max-width: 1024px)':{
-      //   float:'left',
-      //   whiteSpace:'nowrap',
-      //   fontSize:'10px',
-      //   }
     },
     mail:{
       whiteSpace: "nowrap",
       width: 150,
       overflow: "hidden",
       textOverflow: "ellipsis",
-      // '@media screen and (max-width: 1024px)':{
-      //  fontSize:'.7rem'
-      //   }
     },
     img:{
       height:32

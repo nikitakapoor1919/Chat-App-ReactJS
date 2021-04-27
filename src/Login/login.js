@@ -121,11 +121,20 @@ class LoginComponent extends React.Component {
             email:result.user.email ,
             name:result.user.displayName,
             isOnline:true,
-            about:"Available",
-            pic:"" 
           })
-          console.log('Done Uploading Info')
-        
+          .catch((err)=>{
+            firebase
+            .firestore()
+            .collection('users')
+            .doc(result.user.email)
+            .set({
+                email:result.user.email ,
+                name:result.user.displayName,
+                isOnline:true,
+                about:"Available",
+                pic:"" 
+              })
+          })
         console.log('User'+result.user)
         console.log('Email'+result.user.email)
         console.log("name: "+ result.user.displayName)

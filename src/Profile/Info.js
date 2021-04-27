@@ -4,7 +4,11 @@ import Avatar from '@material-ui/core/Avatar';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const firebase = require("firebase");
 
@@ -12,7 +16,8 @@ class ProfileComponent extends React.Component {
 
 constructor(props) {
     super(props)
-
+    this.ref = firebase.firestore().collection('users');
+    this.unsubscribe = null;
     this.state = {
          email:null,
          setOpen:false,
@@ -25,7 +30,8 @@ constructor(props) {
          url:'',
          openPicDialog:false,
          progress:0,
-         isOnline:false
+         isOnline:false,
+         users: []
     }
 }
     render() {
@@ -55,19 +61,31 @@ constructor(props) {
             <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px'}}>
                 {this.state.email}
             </div> 
+            {this.state.users.map((user) => (
+            <List component="nav" className={classes.root} aria-label="contacts">
+            {user.isOnline ?  <ListItem button>
+                    <ListItemIcon style={{color:"#4caf50"}}>
+                    <FiberManualRecordIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={user.email} />
+                </ListItem>:''}
+            </List>
+            ))}
             </div>
           </Container>
             </div>
         )
     }
-    
-    componentWillMount = () => {
+    componentDidMount() {
+        this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+      }
+    componentWillMount = async () => {
         firebase.auth().onAuthStateChanged(async _usr => {
         //   if(!_usr)
         //     this.props.history.push('/login');
           if(_usr){
               {this.setState({email:_usr.email})}
-            firebase
+             await firebase
             .firestore().collection('users').doc(_usr.email)
            .get()
             .then(doc => {
@@ -93,6 +111,23 @@ constructor(props) {
           }
       });
     }
+    
+    onCollectionUpdate = (querySnapshot) => {
+        const users = [];
+        querySnapshot.forEach((doc) => {
+          const { email,isOnline} = doc.data();
+          console.log("Data",doc.id);
+          users.push({
+            key: doc.id,
+            doc, // DocumentSnapshot
+            email,
+            isOnline
+          });
+        });
+        this.setState({
+          users
+       });
+      }
 }
 
 export default withStyles(styles)(ProfileComponent)

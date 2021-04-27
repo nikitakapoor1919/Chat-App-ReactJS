@@ -20,14 +20,17 @@ const ITEM_HEIGHT = 48;
     setAnchorEl(event.currentTarget);
   };
   const signOut = async () => {
-    // await firebase
-    //     .firestore()
-    //     .collection('users')
-    //     .doc(email)
-    //     .update({
-    //         isOnline:false,
-    //       })
-    //       console.log('Done Uploading Info')
+    // console("Email signout"+email)
+    if(email){
+      await firebase
+        .firestore()
+        .collection('users')
+        .doc(email)
+        .update({
+            isOnline:false,
+          })
+          console.log('Done Uploading Info')
+    }
     await firebase.auth().signOut();
     console.log("Email "+ email)
     }
