@@ -68,9 +68,9 @@ handleClosePic = () => {
         const {classes}=this.props
         const { onClose, selectedValue, open } = this.props;
         return (
-            <div style={{background:'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/background.jpg)',height:'100vh'}}>
+            <div style={{backgroundColor:"#e3eae5",height:'100vh'}}>
                 <AppBar className={classes.appBar}>
-            <Toolbar>
+            <Toolbar style={{marginTop:10}}>
                 <a href='/dashboard' className={classes.back}>
                 <IconButton edge="start" color="inherit" onClick={this.back} aria-label="close">
                     <ArrowBackIcon/>
@@ -358,7 +358,7 @@ handleClosePic = () => {
         .firestore()
         .collection('users')
         .doc(uemail)
-        .set({
+        .update({
             email:this.state.email ,
             about:this.state.value ? this.state.value :'',
             name:this.state.name ? this.state.name:'',
@@ -367,7 +367,6 @@ handleClosePic = () => {
           console.log('Done Uploading Info')
 
         }
-
 }
 
 export default withStyles(styles)(ProfileComponent)

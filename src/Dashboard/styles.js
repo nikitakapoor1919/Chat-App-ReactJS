@@ -43,7 +43,7 @@ const styles = theme => ({
       margin: 15,
       fontSize: 30,
       color: "white"
-    }
+    },
   });
   
   export default styles;

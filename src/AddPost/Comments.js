@@ -25,7 +25,7 @@ export class Comments extends Component {
         this.state = {
              open:false,
              commmentPost:'',
-             comments:[]
+            //  comments:[]
         }
     }
     openChatDialog=()=>{
@@ -36,42 +36,43 @@ export class Comments extends Component {
     };
     handleClose = () => {
     this.setState({open:false})
-
+    
     };
-
-   submitNew(_uid){
+   
+   submitNew(e){
+    e.preventDefault()
     firebase
     .firestore()
-    .collection('posts')
-    .doc(_uid)
-    .set({
-       comments:firebase.firestore.FieldValue.arrayUnion({
-         email:this.props.email,
-         profilePic:this.props.url,
-         comment:this.state.commmentPost,
-         timestamp:Date.now()
-       })
-    });
-      console.log('Done Uploading Info')
-      this.setState({commmentPost:''})
-  }
-  submit(_uid){
-    firebase
-    .firestore()
-    .collection('posts')
-    .doc(_uid)
+    .collection('comments')
+    .doc(this.props.uid)
     .update({
-       comments:firebase.firestore.FieldValue.arrayUnion({
+    //    totalComment:firebase.firestore.FieldValue.increment(1),
+       commentsPost:firebase.firestore.FieldValue.arrayUnion({
          email:this.props.email,
-         profilePic:this.props.url,
          comment:this.state.commmentPost,
          timestamp:Date.now()
        })
     });
-      console.log('Done Uploading Info')
-      this.setState({commmentPost:''})
-  
+    this.setState({commmentPost:''})
+    //   console.log('Done Uploading Info')
   }
+//   submit(_uid){
+//     firebase
+//     .firestore()
+//     .collection('posts')
+//     .doc(_uid)
+//     .update({
+//        comments:firebase.firestore.FieldValue.arrayUnion({
+//          email:this.props.email,
+//          profilePic:this.props.url,
+//          comment:this.state.commmentPost,
+//          timestamp:Date.now()
+//        })
+//     });
+//     //   console.log('Done Uploading Info')
+//     //   this.setState({commmentPost:''})
+  
+//   }
    userTyping=(type,e)=>{
     switch(type){
         case 'write':
@@ -81,23 +82,6 @@ export class Comments extends Component {
             break
     }
   } 
-  componentDidUpdate(){
-        // firebase
-        // .firestore()
-        // .collection('comments')
-        // .doc(this.props.comment)
-        // .get()
-        // .then(doc => {
-        //     if (!doc.exists) {
-        //     console.log('No such document!');
-        //     } else {
-        //         this.setState({
-        //             comments:doc.data()
-        //         })
-        //     console.log('All Comments:', doc.data());
-        //     }
-        // })
-  }
     render() {
         const { classes } = this.props;
         return (
@@ -111,21 +95,22 @@ export class Comments extends Component {
                 {/* <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open} > */}
                     <Card >
                     <CardContent>
-                    <div style={{width:400}} >
+                    <form style={{display:"flex",justifyContent:"space-between",width:"100%"}} onSubmit={(e)=>this.submitNew(e)}>
                     <TextField
                     // autoFocus
                     margin="dense"
                     id="name"
                     label="Write Comment..."
-                    style={{width:'60%',marginLeft:20}}
+                    style={{width:'100%'}}
                     onChange={(e)=>this.userTyping('write',e)}
                     multiline
                     variant="outlined" 
                     />
-                    <Button onClick={this.submitNew.bind(this,this.props.uid)} color="primary" style={{marginTop:15,marginLeft:10}}>
+                    {/* onClick={this.props.onChange(this.state.commmentPost)} */}
+                    <Button  color="primary" style={{marginTop:15,marginLeft:10}}>
                     ADD
                     </Button>
-                    </div>
+                    </form>
                     <CardHeader
                     avatar={
                     <Avatar  className={classes.avatar}>

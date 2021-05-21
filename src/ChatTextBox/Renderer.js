@@ -14,37 +14,43 @@ class Renderer extends Component{
   
   
   state = {
-    pureText: "",
+    pureText: this.props.text,
   };
-  
-
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.pureText !==this.props.text) {
+      this.setState({pureText: this.props.text})
+      let encryptData=this.context.encrypt(this.state.pureText)
+      // this.props.onStepChange(encryptData)
+      this.props.onStepChange(this.context.decrypt(encryptData))
+    }
+  }
   onChange = event => {
     
     const {
       name,
       value,
     } = event.target;
-
+    
     this.setState({
       [name]: value,
     });
-
+  
   }
   
-  render(){
-
+  render(props){
+    
     
     const {
       pureText,
     } = this.state;
     
-
+    
     const {
       encrypt,
       decrypt,
     } = this.context;
     
-
+    
     let encryptedText
     let decryptedText
     
@@ -52,11 +58,11 @@ class Renderer extends Component{
     encryptedText = encrypt(pureText);
     decryptedText = decrypt(encryptedText);
     
-
+    
     return <div>
-
+      {/* {this.props.onStepChange(encryptedText)} */}
       <div>
-
+        
         <h3>
           Pure text
         </h3>
@@ -87,7 +93,7 @@ class Renderer extends Component{
           value={encryptedText || ""}
           disabled
         />
-
+       {/* {this.props.onStepChange(encryptedText)} */}
       </div>
 
       <div>

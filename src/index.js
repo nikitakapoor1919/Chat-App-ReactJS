@@ -18,22 +18,19 @@ import { ContextProvider } from './Context';
 const firebase=require("firebase")
 require("firebase/firestore")
 
-firebase.initializeApp({
 
-
-})
 const storage=firebase.storage()
 const routing =(
   <Router>
-    <div id="routing-container" style={{height:'100vh',backgroundColor:"#e3eae5"}} >
+    <div id="routing-container" style={{height:'100vh',background:"url(https://res.cloudinary.com/practicaldev/image/fetch/s--WAKqnINn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/tw0nawnvo0zpgm5nx4fp.png)"}} >
     <Route exact path='/' component={LoginComponent}></Route>
       <Route path='/login' component={LoginComponent}></Route>
       <Route path='/signup' component={SignupComponent}></Route>
       <Route path='/dashboard' component={DashboardComponent}></Route>
       <Route path='/profile' component={ProfileComponent}></Route>
-      <Route path='/post' component={Post} ></Route>
+      {/* <Route path='/post' component={Post} ></Route> */}
       <Route path='/chatroom' component={ChatRoomComponent}></Route>
-      <Route path='/video-call' component={VideoCallComponent}></Route>
+      {/* <Route path='/video-call' component={VideoCallComponent}></Route> */}
       {/* <Route component={NotFoundPage} /> */}
     </div>
   </Router>

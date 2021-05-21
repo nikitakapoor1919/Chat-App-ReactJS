@@ -15,6 +15,9 @@ const styles = theme => ({
       boxSizing: 'border-box',
       overflow: 'auto',
       width: 'calc(100% - 250px - 50px)',
+      borderRadius: "30px",
+      backgroundColor:"#e3eae5",
+      padding:" 10px",
       '@media screen and (max-width: 1024px)': {
         left: '10px',
         width: 'calc(100% - 10px - 10px)'
@@ -23,10 +26,12 @@ const styles = theme => ({
   
     chatTextBox: {
       width: 'calc(100% - 100px)',
+      marginLeft:5
     },
     sticker:{
       height:'25px',
-      cursor:'pointer'
+      cursor:'pointer',
+    
     },
     listSticker:{
       position: 'fixed',

@@ -1,7 +1,7 @@
 const styles = theme => ({
 
     content: {
-      height: 'calc(100vh - 100px)',
+      height: 'calc(100vh - 120px)',
       overflow: 'auto',
       padding: '25px',
       marginLeft: '250px',
@@ -91,7 +91,7 @@ const styles = theme => ({
       backgroundColor: '#4caf50'
     },
    list:{
-    marginLeft:70
+    marginLeft:50
    },
    image:{
      height:'300px',

@@ -17,7 +17,9 @@ import SendIcon from '@material-ui/icons/Send';
 import styles from './styles';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-
+import Toolbar from '@material-ui/core/Toolbar';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '@material-ui/core/IconButton';
 const firebase = require("firebase");
 
  class ChatRoom extends Component {
@@ -220,9 +222,27 @@ const firebase = require("firebase");
          )
       });
     return (
-      <div style={{overflowX:'hidden',backgroundColor:"#e3eae5"}}>
+      <>
+      {/* <div className={classes.chatHeader}></div> */}
+      <Grid container component={Paper}>
+            <Grid item xs={12}>
+              <div className={classes.chatHeader}>
+                <Toolbar style={{marginTop:15}}>
+                  <a href='/dashboard' className={classes.back}>
+                  <IconButton edge="start" color="inherit" onClick={this.back} aria-label="close">
+                      <ArrowBackIcon/>
+                  </IconButton>
+                  </a>
+                  <Typography variant="h6" className={classes.title}>
+                   Chat Room
+                  </Typography>
+              </Toolbar>
+              </div>
+            </Grid>
+      </Grid>   
+      <div style={{overflowX:'hidden',backgroundColor:"#e3eae5"}}>   
         <Grid container component={Paper} className={classes.chatSection}>
-            <Grid item xs={3} className={classes.borderRight500}>
+            <Grid item xs={2} className={classes.borderRight500} style={{paddingTop:100}}>
                 <List>
                     <ListItem button key="RemySharp">
                         <ListItemIcon>
@@ -251,15 +271,17 @@ const firebase = require("firebase");
                       {usersList}
                 </List>
             </Grid>
-            <Grid item xs={9} style={{backgroundColor:"#e3eae5"}} className={classes.chat}>
-            <main  className={classes.content} style={{background:"url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDv1P9jgY0zf10uP9wenxHm481IE8RAlsVQMHdY42j2A&usqp=CAU&ec=45673586)"}}>
+            <Grid item xs={10} style={{backgroundColor:"#e3eae5",paddingTop:85}} className={classes.chat} >
+            <Grid item xs={12} >
+            <main  className={classes.content} style={{background:"url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDv1P9jgY0zf10uP9wenxHm481IE8RAlsVQMHdY42j2A&usqp=CAU&ec=45673586)"}} >
                 <List id='chatview-container' className={classes.messageArea}>
                     {messagesList}
                 </List>
              </main>   
-                <Divider />
-                <form className="form-group" onSubmit={this.handleSubmit.bind(this)}>
-                <Grid container style={{padding: '20px',backgroundColor:"#e3eae5"}}>
+            </Grid>
+            <Grid item xs={12} >
+            <form className="form-group" onSubmit={this.handleSubmit.bind(this)}>
+                <Grid container style={{backgroundColor:"#e3eae5",padding:10}}>
                 <Grid item xs={11}>
                         <TextField id="outlined-basic-email" 
                         label="Type Something" 
@@ -268,14 +290,17 @@ const firebase = require("firebase");
                         onChange={this.updateMessage.bind(this)}
                         />
                   </Grid>
-                    <Grid xs={1} align="right">
-                        <Fab aria-label="add"><SendIcon style={{color: '#075E54'}} onClick={this.handleSubmit.bind(this)}></SendIcon></Fab>
+                    <Grid xs={1} align="center">
+                        {/* <Fab aria-label="add"><SendIcon style={{color: '#075E54'}} onClick={this.handleSubmit.bind(this)}></SendIcon></Fab> */}
+                        <SendIcon style={{color: '#075E54',marginTop:20}} onClick={this.handleSubmit.bind(this)}></SendIcon>
                     </Grid>
                 </Grid>
                 </form>
             </Grid>
+            </Grid>
         </Grid>
       </div>
+      </>
     )
   }
 }

@@ -37,7 +37,7 @@ constructor(props) {
     render() {
         const {classes}=this.props
         return (
-            <div className={classes.card} >
+            <div className={classes.card}style={{marginBottom:100}} >
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div style={{textAlign:'center'}}>
@@ -54,24 +54,26 @@ constructor(props) {
                     src='https://raw.githubusercontent.com/nikitakapoor1919/Images/main/default-pic.png'>
                     </Avatar>
                 }
+             <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px'}}>
+                {this.state.email}
+            </div> 
             {this.state.value ?
                 <div className={classes.margin} style={{fontWeight:'600'}}>
                    {this.state.value}
                 </div> :  null}
-            <div className={classes.margin} style={{fontWeight:'600',fontSize:'15px'}}>
-                {this.state.email}
-            </div> 
+            </div>
+            {/* <List component="nav" className={classes.root} aria-label="contacts">
             {this.state.users.map((user) => (
-            <List component="nav" className={classes.root} aria-label="contacts">
+           <div>
             {user.isOnline ?  <ListItem button>
                     <ListItemIcon style={{color:"#4caf50"}}>
                     <FiberManualRecordIcon />
                     </ListItemIcon>
                     <ListItemText primary={user.email} />
-                </ListItem>:''}
-            </List>
-            ))}
+                </ListItem>:<span></span>}
             </div>
+            ))}
+             </List> */}
           </Container>
             </div>
         )

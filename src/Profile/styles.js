@@ -1,10 +1,13 @@
 const styles = theme => ({
     card:{
-      position:'absolute',
-      // height:'370px',
-      // width:'420px',
-      top:'100px',
-      left:'400px',
+      // position:'absolute',
+      // // height:'370px',
+      // // width:'420px',
+      // top:'100px',
+      // left:'400px',
+      position:"flex",
+      justifyContent:"center",
+      marginTop:100,
       filter: 'drop-shadow(5px 5px 5px #514e4e)',
       margin:"0 auto",
       height:"auto",
@@ -13,7 +16,8 @@ const styles = theme => ({
       padding:'20px',
       '@media screen and (max-width: 1024px)': {
         width:"90%",
-        left:20,
+        // left:20,
+        marginTop:50,
       }
     },
     large: {
@@ -57,6 +61,7 @@ const styles = theme => ({
       appBar: {
         position: 'relative',
         background:'#075E54',
+        height:"84px"
       },
       title: {
         marginLeft: theme.spacing(2),
@@ -75,6 +80,8 @@ const styles = theme => ({
         fontFamily: 'medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif'
       },
       root:{
+        height:200,
+        overflowX:"scroll",
         '@media screen and (max-width: 1024px)': {
         // display:'none'
         }

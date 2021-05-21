@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{ useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,7 +20,13 @@ import TextField from '@material-ui/core/TextField';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import Avatar from '@material-ui/core/Avatar';
 import {storage} from  '../index'
+import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
 import moment from 'moment'
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Divider, Link } from '@material-ui/core';
+import LabelBottomNavigation from './LabelBottomNavigation';
+import Drawer from './Drawer';
+import { SettingsInputAntennaOutlined } from '@material-ui/icons';
 const firebase = require("firebase");
 
 const useStyles = makeStyles((theme) => ({
@@ -32,12 +38,14 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    justifyContent:"center",
+    fontSize:"1.3rem"
   },
   margin: {
     margin: theme.spacing(1),
     position:'fixed',
-    bottom:0,
-    right:0
+    bottom:60,
+    right:0,
   },
   pic: {
     color: '#fff',
@@ -48,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize:'15px',
     border:'1px solid #534f4f;'
   },
+  link:{
+    textDecoration:"none",
+    color:"white",
+    marginTop:"10px"
+  }
 }));
 
 
@@ -99,11 +112,12 @@ export default function MenuAppBar(props) {
   const [image,setImage]=React.useState('')
   const [chars]=React.useState('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
   const [autoId,setId]=React.useState(false)
+  const [UId,setUId]=React.useState(null)
   
   const addDescp=(value)=>{
     setDesc(value)
   }
-
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -120,8 +134,15 @@ export default function MenuAppBar(props) {
       autoid += chars.charAt(Math.floor(Math.random() * chars.length))
     }
     console.log(autoid)
-     return autoid
+    setId(true)
+    setUId(autoid)
   }
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    if(autoId==false){
+      uniqueId()
+    }
+  });
   const submit=async (e)=>{
     e.preventDefault()
     var uemail = firebase.auth().currentUser.email;
@@ -135,15 +156,45 @@ export default function MenuAppBar(props) {
     .update({
       posts: firebase.firestore.FieldValue.arrayUnion({
         email:props.email ,
-        profilePic:props.url ? props.url:'',
         Description:desc ? desc :'',
         Image:image ? image:'',
         timestamp:Date.now(),
-        uid:autoId ? autoId:uniqueId(),
-        likes:0,
-        comments:0,
+        uid:autoId ? UId:uniqueId(),
     }),
     });
+    await
+    firebase
+    .firestore()
+    .collection('likes')
+    .doc(UId)
+    .set({
+        like:0,
+        uid:UId
+    });
+    await
+    firebase
+    .firestore()
+    .collection('comments')
+    .doc(UId)
+    .set({
+        totalComment:0,
+        commentsPost:[],
+        url:'/'+UId
+    });
+    // await
+    // firebase
+    // .firestore()
+    // .collection('posts')
+    // .doc(props.email)
+    // .update({
+    //   posts: firebase.firestore.FieldValue.arrayUnion({
+    //     email:props.email ,
+    //     Description:desc ? desc :'',
+    //     Image:image ? image:'',
+    //     timestamp:Date.now(),
+    //     uid:UId,
+    // }),
+    // });
       setOpen(false);
       console.log('Done Uploading Info')
       window.location.reload();
@@ -195,17 +246,18 @@ const handleChangeImage=e=>{
         console.log(image)
     } 
 }
-
+  
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{background:'rgb(29, 30, 30) none repeat scroll 0% 0%',opacity:'0.9',position:'fixed',top:0}}>
+      <AppBar style={{background:'#075E54',height:84,position:'fixed',top:0}}>
+        <Toolbar style={{display:"flex",justifyContent:"space-between"}}>
         <Toolbar>
-            <div>
+            <div style={{marginTop:10}}>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                // onClick={handleMenu}
                 color="inherit"
               >
                 {props.email ?
@@ -244,43 +296,71 @@ const handleChangeImage=e=>{
               </Menu>
             </div>
         </Toolbar>
+        <Toolbar variant="h6" className={classes.title}>
+                   Let's Chat
+        </Toolbar>
+        {/* <Toolbar>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                 <MoreVertIcon/>
+              </IconButton>
+        </Toolbar> */}
+        <Toolbar>
+                <Drawer email={props.email}/>
+        </Toolbar>
+        </Toolbar>
       </AppBar>
-      <Fab color="secondary" aria-label="add" className={classes.margin}>
+      {/* <Fab  aria-label="add" style={{backgroundColor: '#128C7E',color:"white",bottom:120}} className={classes.margin}>
+          <Link className={classes.link} href="/dashboard"><MessageOutlinedIcon className={classes.add}/></Link>
+      </Fab> */}
+      <Fab caria-label="add" style={{backgroundColor:"rgb(7, 94, 84)",color:"white"}} className={classes.margin}>
           <AddIcon onClick={handleClickOpen} />
       </Fab>
+      <LabelBottomNavigation/>
       <Dialog onClose={handleCloseDialog} aria-labelledby="customized-dialog-title" open={openD}>
-        <DialogTitle id="customized-dialog-title" onClose={handleCloseDialog} style={{textAlign:'center'}}>
-          ADD NEW POST
-        </DialogTitle>
-        <DialogContent style={{width:500}}>
-        {progress!==0 ? <progress value={progress} max='100'></progress>:''} 
-          <input
-              type="file"
-              id='file'
+        <div>
+          <DialogTitle id="customized-dialog-title" onClose={handleCloseDialog} style={{textAlign:'center',fontWeight:"700",fontSize:"1.5rem"}}>
+            ADD NEW POST
+          </DialogTitle>
+          <Divider/>
+            <DialogContent style={{width:500}}>
+            {progress!==0 ? <progress value={progress} max='100'></progress>:''} 
+              <input
+                  type="file"
+                  id='file'
+                  style={{marginLeft:'40%'}}
+                  onChange={handleChangeImage}
+              />
+              <Button
               style={{marginLeft:'40%'}}
-              onChange={handleChangeImage}
-          />
-          <Button
-           style={{marginLeft:'40%'}}
-           onClick={handleUpload}
-          >
-            <CameraAltIcon/>
-          </Button>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Write Something..."
-            fullWidth
-            onChange={(e)=>userTyping('write',e)}
-            multiline
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={submit} color="primary">
-            POST
-          </Button>
-        </DialogActions>
+              onClick={handleUpload}
+              >
+                <CameraAltIcon/>
+              </Button>
+              <TextField
+                autoFocus
+                variant="outlined"
+                margin="dense"
+                id="name"
+                label="Write Something..."
+                fullWidth
+                multiline
+                rows="4"
+                onChange={(e)=>userTyping('write',e)}
+                multiline
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button autoFocus onClick={submit} color="primary">
+                POST
+              </Button>
+            </DialogActions>
+        </div>
       </Dialog>
     </div>
   );

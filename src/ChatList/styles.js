@@ -2,7 +2,7 @@ const styles = theme => ({
     root: {
       backgroundColor: '#e3eae5',
        height:'100%',
-      position: 'absolute',
+      position: 'fixed',
       left: '0',
       top:'0',
       width: '250px',
@@ -38,7 +38,7 @@ const styles = theme => ({
     rootT: {
       backgroundColor: '#e3eae5',
        height:'100%',
-      position: 'absolute',
+      position: 'fixed',
       left: '0',
       zIndex:99,
       width: '300px',

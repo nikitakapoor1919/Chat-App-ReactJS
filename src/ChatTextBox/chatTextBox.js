@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 import {storage} from  '../index'
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import ReactEncrypt from 'react-encrypt'
+import PropTypes from 'prop-types';
+import Renderer from './Renderer';
 
 const tileData = [
   {
@@ -57,7 +60,11 @@ const tileData = [
   },
 ];
 class ChatTextBoxComponent extends React.Component {
-
+  static contextTypes = {
+    encrypt: PropTypes.func.isRequired,
+    decrypt: PropTypes.func.isRequired,
+  }
+  
   constructor() {
     super();
     this.state = {
@@ -66,16 +73,29 @@ class ChatTextBoxComponent extends React.Component {
       open:false,
       url:'',
       openSticker:false,
+      encryptText:'',
+      decryptText:''
     };
   }
-
+//   onChange=(text)=> { 
+//       this.context.encrypt(this.state.pureText)
+//        this.setState({encryptText:text}) 
+//        console.log("Encrypt  "+text)
+//  }
+  
   render() {
+    
 
     const { classes } = this.props;
     const { onClose, selectedValue, open } = this.props;
-
+    const encryptKey="ewfWE@#%$rfdsefgdsf";
     return(
       <div className={classes.chatTextBoxContainer} >
+      {/* <ReactEncrypt
+        encryptKey={encryptKey}
+      >
+        <Renderer text={this.state.chatText} onStepChange={this.onChange}/>
+      </ReactEncrypt> */}
          <Dialog    onClose={this.handleClosePic}  aria-labelledby="simple-dialog-title" open={this.state.open}>
             <Button onClick={this.handleUpload} color="primary" autoFocus>
             Send
@@ -99,6 +119,9 @@ class ChatTextBoxComponent extends React.Component {
             </div>
         </div>
         :null}
+        <span onClick={this.renderStickers}>
+             <img alt='stickers' className={classes.sticker} src='https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_sticker-512.png'></img>
+        </span>
         <TextField
           placeholder='Type your message...' 
           onKeyUp={(e) => this.userTyping(e)}
@@ -106,9 +129,6 @@ class ChatTextBoxComponent extends React.Component {
           className={classes.chatTextBox}
           onFocus={this.userClickedInput}>
         </TextField>
-        <span onClick={this.renderStickers}>
-             <img alt='stickers' className={classes.sticker} src='https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_sticker-512.png'></img>
-        </span>
         <input
             type="file"
             id='file'
@@ -155,8 +175,11 @@ handleChangeImage=e=>{
         console.log(image)
     } 
 }
-
-  userTyping = (e) => e.keyCode === 13 ? this.submitMessage() : this.setState({ chatText: e.target.value });
+  
+  userTyping = (e) =>{ e.keyCode === 13 ? this.submitMessage() : this.setState({ chatText: e.target.value });
+                // this.setState({encryptText: this.context.encrypt(this.state.pureText)})
+                // console.log("encryppt: "+this.state.encryptText)
+    }
   messageValid = (txt) => txt && txt.replace(/\s/g, '').length;
   userClickedInput = () => this.props.userClickedInputFn();
   submitMessage = () => {

@@ -5,6 +5,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import ReactEncrypt from 'react-encrypt'
 var moment = require('moment-timezone');
 
 
@@ -67,7 +68,8 @@ reciever=()=>{
   render() {
     
     const { classes } = this.props;
-
+    const encryptKey="ewfWE@#%$rfdsefgdsf";
+    
     if(this.props.chat === undefined) {
       return(<main  className={this.props.style ? classes.content:classes.contentNS}></main>);
     } else if(this.props.chat !== undefined) {
@@ -81,7 +83,7 @@ reciever=()=>{
             <Avatar 
               alt="Remy Sharp" 
               className={classes.green} 
-              style={{position: 'absolute',left: '20px',top:'20px',textTransform:'uppercase'}}
+              style={{position: 'absolute',top:'20px',textTransform:'uppercase'}}
               src={
               user.pic ? user.pic : this.props.chat.users.filter(_usr => _usr !== this.props.user)[0].split('')[0]
               }
@@ -112,7 +114,7 @@ reciever=()=>{
           :''
           ))}
           </div>
-          <main id='chatview-container' className={classes.content} style={{background:"url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDv1P9jgY0zf10uP9wenxHm481IE8RAlsVQMHdY42j2A&usqp=CAU&ec=45673586)"}}>
+          <main id='chatview-container' className={classes.content} style={{background:"url(https://res.cloudinary.com/practicaldev/image/fetch/s--WAKqnINn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/tw0nawnvo0zpgm5nx4fp.png)"}}>
             {
               this.props.chat.messages.map((_msg, _index) => {
                 return(

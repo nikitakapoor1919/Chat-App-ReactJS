@@ -18,7 +18,7 @@ export class post extends Component {
     
     render() {
         return (
-            <div style={{background:'url(https://i.pinimg.com/originals/45/ce/c7/45cec757faf8d07318cc829dcf21c697.jpg)'}}>
+            <div style={{backgroundColor:"#e3eae5"}}>
                 <AppBar email={this.state.email} name={this.state.name} url={this.state.url}/>
                 <br/><br/><br/><br/>
                 <Card email={this.state.email} name={this.state.name} url={this.state.url} />

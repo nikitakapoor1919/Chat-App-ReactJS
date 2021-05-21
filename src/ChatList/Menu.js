@@ -61,11 +61,11 @@ const ITEM_HEIGHT = 48;
           },
         }}
       > 
-       {/* {options.map((option) => (
+       {options.map((option) => (
           <MenuItem key={option} onClick={handleClose}>
              <a href='/post' style={{ width: '100%', textDecoration: 'none',color:'black'}}> {option}</a>
           </MenuItem>
-        ))} */}
+        ))}
           <MenuItem>
              <a href='/chatroom' style={{ width: '100%', textDecoration: 'none',color:'black'}}> Join Chat Room</a>
           </MenuItem>

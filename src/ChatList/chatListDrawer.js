@@ -64,7 +64,7 @@ componentDidMount() {
             <img src='https://raw.githubusercontent.com/nikitakapoor1919/Images/main/apple-touch-icon.png' alt='Logo' className={classes.img}></img>
             </span>
             {console.log("Email"+this.props.userEmail)}
-           <Menu email={this.props.userEmail} />
+           {/* <Menu email={this.props.userEmail} /> */}
           </div>
             <List>
               {

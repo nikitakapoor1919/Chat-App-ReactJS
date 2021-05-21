@@ -43,7 +43,7 @@ handleClose = () => {
                 this.setState({
                     posts:doc.data().posts.reverse(),
                 })
-            console.log('All Posts:', doc.data());
+            // console.log('All Posts:', doc.data());
             }
         })
         .catch(err => {
@@ -138,8 +138,7 @@ getComments(_uid){
     const { classes } = this.props;
     return (
       <div>
-          {console.log("URL: "+this.state.profilePic)}
-          <Post posts={this.state.posts}  selectPostFn={this.selectPost} url={this.props.url} />
+          <Post posts={this.state.posts}  email={this.props.email} selectPostFn={this.selectPost} url={this.props.url} />
       </div>
     )
   }

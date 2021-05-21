@@ -19,7 +19,21 @@ const styles = theme => ({
       },
       colorW:{
         color:'gray'
-      }
+      },
+      appBar: {
+        position: 'relative',
+        background:'#075E54',
+        height:"84px"
+      },
+      add:{
+        color: 'white',
+        marginTop: '10px',
+        cursor: 'pointer',
+        fontSize: '30px',
+      },
+      title: {
+        color:"white"
+      },
   });
   
   export default styles;
